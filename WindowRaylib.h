@@ -1,5 +1,14 @@
 #pragma once
-class WindowRaylib
-{
+
+#include "Window.h"
+
+class WindowRaylib : public Window {
+public:
+    void init() override;
+    void createWindow(int width, int height, const std::string& title) override;
+    bool isOpen() const override;
+    void clear() override;
+    void draw(const Sprite& sprite) override;
+    void display() override;
 };
 

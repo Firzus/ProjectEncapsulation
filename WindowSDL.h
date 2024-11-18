@@ -1,6 +1,11 @@
 #pragma once
 
 #include "Window.h"
+#include <iostream>
+//#include <SDL.h>
+
+using namespace std;
+
 
 class WindowSDL : public Window {
 public:

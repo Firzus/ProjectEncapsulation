@@ -32,6 +32,8 @@ int main()
 			std::cout << "SDL Selected\n";
 
 			window = new WindowSDL();
+
+			window->init();
 		}
 		else
 		{

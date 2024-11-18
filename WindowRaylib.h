@@ -2,6 +2,8 @@
 
 #include "Window.h"
 
+#include "raylib.h"
+
 class WindowRaylib : public Window {
 public:
     void init() override;
@@ -10,5 +12,6 @@ public:
     void clear() override;
     void draw(const Sprite& sprite) override;
     void display() override;
+	void close() override;
 };
 

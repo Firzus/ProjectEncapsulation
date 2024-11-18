@@ -10,10 +10,14 @@ int main()
 
 	Window* window = nullptr;
 
+	std::cout << "Project Encapsulation - BOROS Théo / PRIEU Lilian\n";
+
 	while (!isSetUp)
 	{
 		std::cout << "RayLib (1) ou SDL (2) ?\n";
-		std::cin >> choice;
+		//std::cin >> choice;
+
+		choice = 1; // For testing purposes
 
 		system("cls");
 
@@ -21,7 +25,7 @@ int main()
 		{
 			isSetUp = true;
 
-			std::cout << "RayLib Selected\n";
+			std::cout << "RayLib Selected\n\n";
 
 			window = new WindowRaylib();
 		}
@@ -29,7 +33,7 @@ int main()
 		{
 			isSetUp = true;
 
-			std::cout << "SDL Selected\n";
+			std::cout << "SDL Selected\n\n";
 
 			window = new WindowSDL();
 		}
@@ -39,20 +43,31 @@ int main()
 		}
 	}
 
+	// Position et taille du cercle
+	int circleX = 400; // Position X (au centre de l'écran)
+	int circleY = 300; // Position Y (au centre de l'écran)
+	int circleRadius = 50; // Rayon du cercle
+
 	// Initialisation et utilisation de l'encapsulation choisie
 	if (window)
 	{
 		window->init();
-		window->createWindow(800, 600, "Bouncing Circles");
+		window->createWindow(800, 600, "Nice Ass");
 
 		while (window->isOpen())
 		{
 			window->clear();
-			// Ajoutez ici le dessin des cercles ou autres éléments
+
+			//window->draw();
+			// Dessiner le cercle (position X, Y et rayon)
+			DrawCircle(circleX, circleY, circleRadius, BLUE); // Cercle bleu
+
 			window->display();
 		}
 
-		delete window; // Nettoyage de la mémoire
+		window->close();
+
+		delete window;
 	}
 
 	return 0;

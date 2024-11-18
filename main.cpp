@@ -10,14 +10,16 @@ int main()
 
 	Window* window = nullptr;
 
-	std::cout << "Project Encapsulation - BOROS Théo / PRIEU Lilian\n";
+	std::cout << "Project Encapsulation - BOROS Theo / PRIEU Lilian\n\n";
 
 	while (!isSetUp)
 	{
 		std::cout << "RayLib (1) ou SDL (2) ?\n";
-		std::cin >> choice;
+		//std::cin >> choice;
 
-		//choice = 1; // For testing purposes
+		// For testing purposes
+		choice = 1;
+		//choice = 2;
 
 		system("cls");
 
@@ -41,14 +43,11 @@ int main()
 		}
 		else
 		{
-			std::cout << "Choix invalide. Réessayez.\n";
+			std::cout << "Choix invalide. Reessayez.\n";
 		}
 	}
 
-	// Position et taille du cercle
-	int circleX = 400; // Position X (au centre de l'écran)
-	int circleY = 300; // Position Y (au centre de l'écran)
-	int circleRadius = 50; // Rayon du cercle
+	Window::ColorRGBA bgColor(0, 255, 0, 255);
 
 	// Initialisation et utilisation de l'encapsulation choisie
 	if (window)
@@ -58,13 +57,13 @@ int main()
 
 		while (window->isOpen())
 		{
-			window->clear();
+			window->clear(bgColor);
+			window->beginDrawing();
 
-			//window->draw();
-			// Dessiner le cercle (position X, Y et rayon)
-			//DrawCircle(circleX, circleY, circleRadius, BLUE); // Cercle bleu
+			DrawCircle(200, 200, 50, BLUE); // Dessiner un cercle
+			DrawCircle(400, 300, 50, BLUE); // Dessiner un cercle
 
-			window->display();
+			window->endDrawing();
 		}
 
 		window->close();

@@ -129,6 +129,8 @@
   <ItemGroup>
     <ClCompile Include="FPSCounter.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Shape.cpp" />
+    <ClCompile Include="ShapeSDL.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteRaylib.cpp" />
     <ClCompile Include="SpriteSDL.cpp" />
@@ -138,6 +140,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FPSCounter.h" />
+    <ClInclude Include="Shape.h" />
+    <ClInclude Include="ShapeSDL.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteRaylib.h" />
     <ClInclude Include="SpriteSDL.h" />

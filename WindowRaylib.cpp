@@ -12,21 +12,29 @@ bool WindowRaylib::isOpen() const
 	return !WindowShouldClose();
 }
 
-void WindowRaylib::clear()
+void WindowRaylib::clear(const ColorRGBA& color)
 {
+    ClearBackground(Color{ color.r, color.g, color.b, color.a });
+
     BeginDrawing();
-
-    ClearBackground(RAYWHITE);
 }
 
-void WindowRaylib::draw(const Sprite& sprite)
+void WindowRaylib::beginDrawing()
 {
-
+	BeginDrawing();
 }
 
-void WindowRaylib::display()
+void WindowRaylib::endDrawing()
 {
-    EndDrawing();
+	EndDrawing();
+}
+
+void WindowRaylib::drawSprite(const Sprite& sprite)
+{
+}
+
+void WindowRaylib::drawShape(const Shape& shape)
+{
 }
 
 void WindowRaylib::close()

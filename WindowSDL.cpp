@@ -17,11 +17,19 @@ void WindowSDL::clear()
 {
 }
 
-void WindowSDL::draw(const Sprite& sprite)
+void WindowSDL::beginDrawing()
 {
 }
 
-void WindowSDL::display()
+void WindowSDL::endDrawing()
+{
+}
+
+void WindowSDL::drawSprite(const Sprite& sprite)
+{
+}
+
+void WindowSDL::drawShape(const Shape& shape)
 {
 }
 

@@ -14,19 +14,27 @@ bool WindowRaylib::isOpen() const
 
 void WindowRaylib::clear()
 {
+    ClearBackground(BLACK);
+
     BeginDrawing();
-
-    ClearBackground(RAYWHITE);
 }
 
-void WindowRaylib::draw(const Sprite& sprite)
+void WindowRaylib::beginDrawing()
 {
-
+	BeginDrawing();
 }
 
-void WindowRaylib::display()
+void WindowRaylib::endDrawing()
 {
-    EndDrawing();
+	EndDrawing();
+}
+
+void WindowRaylib::drawSprite(const Sprite& sprite)
+{
+}
+
+void WindowRaylib::drawShape(const Shape& shape)
+{
 }
 
 void WindowRaylib::close()

@@ -15,9 +15,9 @@ int main()
 	while (!isSetUp)
 	{
 		std::cout << "RayLib (1) ou SDL (2) ?\n";
-		//std::cin >> choice;
+		std::cin >> choice;
 
-		choice = 1; // For testing purposes
+		//choice = 1; // For testing purposes
 
 		system("cls");
 

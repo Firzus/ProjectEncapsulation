@@ -45,6 +45,8 @@ int main()
 		}
 	}
 
+	Window::ColorRGBA bgColor(0, 255, 0, 255);
+
 	// Initialisation et utilisation de l'encapsulation choisie
 	if (window)
 	{
@@ -53,7 +55,7 @@ int main()
 
 		while (window->isOpen())
 		{
-			window->clear();
+			window->clear(bgColor);
 			window->beginDrawing();
 
 			DrawCircle(200, 200, 50, BLUE); // Dessiner un cercle

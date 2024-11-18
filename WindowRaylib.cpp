@@ -12,9 +12,9 @@ bool WindowRaylib::isOpen() const
 	return !WindowShouldClose();
 }
 
-void WindowRaylib::clear()
+void WindowRaylib::clear(const ColorRGBA& color)
 {
-    ClearBackground(BLACK);
+    ClearBackground(Color{ color.r, color.g, color.b, color.a });
 
     BeginDrawing();
 }

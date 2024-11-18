@@ -6,12 +6,21 @@
 class Window
 {
 public:
+    struct ColorRGBA {
+        unsigned char r, g, b, a;
+
+        // Constructeur pour initialiser la couleur
+        ColorRGBA(unsigned char r, unsigned char g, unsigned char b, unsigned char a)
+            : r(r), g(g), b(b), a(a) {
+        }
+    };
+
     virtual ~Window() = default;
 
     virtual void init() = 0;
     virtual void createWindow(int width, int height, const std::string& title) = 0;
     virtual bool isOpen() const = 0;
-    virtual void clear() = 0;
+    virtual void clear(const ColorRGBA& color) = 0;
     virtual void beginDrawing() = 0;
 	virtual void endDrawing() = 0;
     virtual void drawSprite(const Sprite& sprite) = 0;

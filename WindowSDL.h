@@ -10,6 +10,11 @@
 class WindowSDL : public Window {
 SDL_Window* window = nullptr;
 SDL_Renderer* renderer = nullptr;
+SDL_Event event;
+SDL_Surface* image = NULL;
+SDL_Texture* texture = NULL;
+SDL_Rect dstrect;
+bool isImageLoaded = false;
 bool open = false;
 
 public:
@@ -24,4 +29,7 @@ public:
 	void drawSprite(const Sprite& sprite) override;
 	void drawShape(const Shape& shape) override;
 	void close() override;
+
+	void SDL_RenderDrawCircle(SDL_Renderer* renderer, int x, int y, int radius);
+	void SDL_RenderFillCircle(SDL_Renderer* renderer, int x, int y, int radius);
 };

@@ -40,7 +40,49 @@ void WindowSDL::clear(const ColorRGBA& color)
 	SDL_RenderClear(renderer);
 }
 
-void WindowSDL::beginDrawing() {}
+void WindowSDL::beginDrawing() 
+{
+    while (SDL_PollEvent(&event)) 
+    {
+        if (event.type == SDL_QUIT) 
+        { 
+            open = false;
+        }
+
+        // Events
+    }
+
+    // Drawing color
+    SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+
+    /*
+    SDL_Rect rect;
+    rect.x = 250;
+    rect.y = 150;
+    rect.w = 200;
+    rect.h = 200;
+
+    SDL_RenderDrawRect(renderer, &rect);
+    SDL_RenderFillRect(renderer, &rect);
+    */
+
+    /*
+    SDL_RenderDrawCircle(renderer, 200, 200, 50);
+    SDL_RenderFillCircle(renderer, 200, 200, 50);
+    */
+
+    if (!isImageLoaded)
+    {
+        image = SDL_LoadBMP("x64/Debug/tree.bmp");
+        texture = SDL_CreateTextureFromSurface(renderer, image);
+        dstrect = { 20, 20, 400, 600 };   // posx, posy, length, height
+
+        isImageLoaded = true;
+    }
+    // copy the texture to the rendering context
+    SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+
+}
 
 void WindowSDL::endDrawing()
 {
@@ -65,10 +107,105 @@ void WindowSDL::close()
         SDL_DestroyWindow(window);
         window = nullptr;
     }
+    if (texture) {
+        SDL_DestroyTexture(texture);
+        texture = nullptr;
+    }
+    if (image) {
+        SDL_FreeSurface(image);
+        image = nullptr;
+    }
+
     SDL_Quit();
     open = false;
 }
 
+
 WindowSDL::~WindowSDL() {
     close();
+}
+
+
+void WindowSDL::SDL_RenderDrawCircle(SDL_Renderer* renderer, int x, int y, int radius)
+{
+    int offsetx, offsety, d;
+    int status;
+
+    offsetx = 0;
+    offsety = radius;
+    d = radius - 1;
+    status = 0;
+
+    while (offsety >= offsetx) {
+        status += SDL_RenderDrawPoint(renderer, x + offsetx, y + offsety);
+        status += SDL_RenderDrawPoint(renderer, x + offsety, y + offsetx);
+        status += SDL_RenderDrawPoint(renderer, x - offsetx, y + offsety);
+        status += SDL_RenderDrawPoint(renderer, x - offsety, y + offsetx);
+        status += SDL_RenderDrawPoint(renderer, x + offsetx, y - offsety);
+        status += SDL_RenderDrawPoint(renderer, x + offsety, y - offsetx);
+        status += SDL_RenderDrawPoint(renderer, x - offsetx, y - offsety);
+        status += SDL_RenderDrawPoint(renderer, x - offsety, y - offsetx);
+
+        if (status < 0) {
+            status = -1;
+            break;
+        }
+
+        if (d >= 2 * offsetx) {
+            d -= 2 * offsetx + 1;
+            offsetx += 1;
+        }
+        else if (d < 2 * (radius - offsety)) {
+            d += 2 * offsety - 1;
+            offsety -= 1;
+        }
+        else {
+            d += 2 * (offsety - offsetx - 1);
+            offsety -= 1;
+            offsetx += 1;
+        }
+    }
+}
+
+
+void WindowSDL::SDL_RenderFillCircle(SDL_Renderer* renderer, int x, int y, int radius)
+{
+    int offsetx, offsety, d;
+    int status;
+
+    offsetx = 0;
+    offsety = radius;
+    d = radius - 1;
+    status = 0;
+
+    while (offsety >= offsetx) {
+
+        status += SDL_RenderDrawLine(renderer, x - offsety, y + offsetx,
+            x + offsety, y + offsetx);
+        status += SDL_RenderDrawLine(renderer, x - offsetx, y + offsety,
+            x + offsetx, y + offsety);
+        status += SDL_RenderDrawLine(renderer, x - offsetx, y - offsety,
+            x + offsetx, y - offsety);
+        status += SDL_RenderDrawLine(renderer, x - offsety, y - offsetx,
+            x + offsety, y - offsetx);
+
+        if (status < 0) {
+            status = -1;
+            break;
+        }
+
+        if (d >= 2 * offsetx) {
+            d -= 2 * offsetx + 1;
+            offsetx += 1;
+        }
+        else if (d < 2 * (radius - offsety)) {
+            d += 2 * offsety - 1;
+            offsety -= 1;
+        }
+        else {
+            d += 2 * (offsety - offsetx - 1);
+            offsety -= 1;
+            offsetx += 1;
+        }
+    }
 }

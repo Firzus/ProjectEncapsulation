@@ -18,8 +18,8 @@ int main()
 		//std::cin >> choice;
 
 		// For testing purposes
-		choice = 1;
-		//choice = 2;
+		//choice = 1;
+		choice = 2;
 
 		system("cls");
 
@@ -38,8 +38,6 @@ int main()
 			std::cout << "SDL Selected\n\n";
 
 			window = new WindowSDL();
-
-			window->init();
 		}
 		else
 		{
@@ -59,9 +57,6 @@ int main()
 		{
 			window->clear(bgColor);
 			window->beginDrawing();
-
-			DrawCircle(200, 200, 50, BLUE); // Dessiner un cercle
-			DrawCircle(400, 300, 50, BLUE); // Dessiner un cercle
 
 			window->endDrawing();
 		}

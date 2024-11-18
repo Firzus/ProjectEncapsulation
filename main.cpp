@@ -62,7 +62,7 @@ int main()
 
 			//window->draw();
 			// Dessiner le cercle (position X, Y et rayon)
-			DrawCircle(circleX, circleY, circleRadius, BLUE); // Cercle bleu
+			//DrawCircle(circleX, circleY, circleRadius, BLUE); // Cercle bleu
 
 			window->display();
 		}

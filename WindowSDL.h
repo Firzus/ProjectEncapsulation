@@ -1,10 +1,9 @@
 #pragma once
+#define SDL_MAIN_HANDLED
 
 #include "Window.h"
 #include <iostream>
-//#include <SDL.h>
-
-using namespace std;
+#include <SDL2/SDL.h>
 
 
 class WindowSDL : public Window {

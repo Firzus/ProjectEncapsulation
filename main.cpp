@@ -1,5 +1,7 @@
 #include <iostream>
-#include "window.h"
+
+#include "WindowSDL.h"
+#include "WindowRaylib.h"
 
 int main()
 {
@@ -16,15 +18,15 @@ int main()
 		if (choice == 1)
 		{
 			isSetUp = true;
+			std::cout << "RayLib Selected\n";
 			// RayLib;
-			std::cout << "RayLil Selected\n";
 			
 		}
 		if (choice == 2)
 		{
 			isSetUp = true;
-			// SDL_Window;
 			std::cout << "SDL Selected\n";
+			// SDL_Window;
 		}
 	}
 }

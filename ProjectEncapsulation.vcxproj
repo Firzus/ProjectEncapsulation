@@ -127,11 +127,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FPSCounter.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="window.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="WindowRaylib.cpp" />
+    <ClCompile Include="WindowSDL.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="window.h" />
+    <ClInclude Include="FPSCounter.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Window.h" />
+    <ClInclude Include="WindowRaylib.h" />
+    <ClInclude Include="WindowSDL.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

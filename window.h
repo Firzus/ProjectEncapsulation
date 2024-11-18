@@ -12,4 +12,5 @@ public:
     virtual void clear() = 0;
     virtual void draw(const Sprite& sprite) = 0;
     virtual void display() = 0;
+	virtual void close() = 0;
 };

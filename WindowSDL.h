@@ -15,4 +15,5 @@ public:
     void clear() override;
     void draw(const Sprite& sprite) override;
     void display() override;
+	void close() override;
 };

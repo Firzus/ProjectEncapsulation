@@ -56,3 +56,7 @@ void WindowSDL::draw(const Sprite& sprite)
 void WindowSDL::display()
 {
 }
+
+void WindowSDL::close()
+{
+}

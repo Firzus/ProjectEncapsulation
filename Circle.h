@@ -1,35 +1,25 @@
 #pragma once
 
-#include "ColorRGBA.h"
-
 #include <string>
+#include "ColorRGBA.h"
+#include "Entity.h"
 
-class Circle
-{
+class Circle : public Entity {
 protected:
-	std::string label;
-	int posX, posY;
 	ColorRGBA color;
 	float radius;
 
 public:
-	Circle(std::string label, int x, int y, const ColorRGBA& color, float radius)
-		: label(label), posX(x), posY(y), color(color), radius(radius) {
+	Circle(const std::string& label, int x, int y, const ColorRGBA& color, float radius) : Entity(), color(color), radius(radius)
+	{
+		this->label = label;
+		this->posX = x;
+		this->posY = y;
 	}
 
 	virtual ~Circle() = default;
 
-	virtual void draw() const = 0;
-	// Renvoie un pointeur générique vers les données
-	virtual void* getData() const = 0;
-	virtual void setPosition(int x, int y) = 0;
-	virtual void moove(int x, int y) = 0;
-	virtual void setColor(const ColorRGBA& newColor) = 0;
-
 	// Getters
-	std::string getLabel() const { return label; }
-	int getPosX() const { return posX; }
-	int getPosY() const { return posY; }
 	ColorRGBA getColor() const { return color; }
 	float getRadius() const { return radius; }
 };

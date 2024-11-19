@@ -69,8 +69,15 @@ int main()
 		window->endDrawing();
 
 		// Update
-		window->getCircle("cercle1")->moove(1, 0);
-		window->getCircle("cercle2")->moove(1, 1);
+		window->getCircle("cercle1")->move(1, 0);
+
+		// Inputs handling (Raylib)
+		if (IsKeyDown(KEY_DOWN)) window->getCircle("cercle2")->move(0, 1);
+		if (IsKeyDown(KEY_UP)) window->getCircle("cercle2")->move(0, -1);
+		if (IsKeyDown(KEY_LEFT)) window->getCircle("cercle2")->move(-1, 0);
+		if (IsKeyDown(KEY_RIGHT)) window->getCircle("cercle2")->move(1, 0);
+
+		if (IsKeyDown(KEY_SPACE)) window->removeCircle("cercle2");
 	}
 
 	window->close();

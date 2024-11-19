@@ -52,6 +52,12 @@ void WindowSDL::endDrawing()
 
 void WindowSDL::createCircle(std::string label, int x, int y, const ColorRGBA& color, float radius)
 {
+
+}
+
+void WindowSDL::removeCircle(const std::string& label)
+{
+
 }
 
 void WindowSDL::createSprite(int x, int y, const std::string& filePath)

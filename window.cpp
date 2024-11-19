@@ -8,6 +8,14 @@ void Window::createCircle(std::string label, int x, int y, const ColorRGBA& colo
     }
 }
 
+void Window::removeCircle(const std::string& label)
+{
+	std::unordered_map<std::string, Circle*>::iterator it = circles.find(label);
+	if (it != circles.end()) {
+		circles.erase(it);
+	}
+}
+
 Circle* Window::getCircle(const std::string& label)
 {
     std::unordered_map<std::string, Circle*>::iterator it = circles.find(label);

@@ -26,8 +26,10 @@ public:
     void clear(const ColorRGBA& color) override;
 	void beginDrawing() override;
 	void endDrawing() override;
-	void drawSprite(const Sprite& sprite) override;
-	void drawShape(const Shape& shape) override;
+	void createCircle(std::string label, int x, int y, const ColorRGBA& color, float radius) override;
+	void createSprite(int x, int y, const std::string& filePath) override;
+	void drawSprite(std::string label) override;
+	void drawCircle(std::string label) override;
 	void close() override;
 
 	void SDL_RenderDrawCircle(SDL_Renderer* renderer, int x, int y, int radius);

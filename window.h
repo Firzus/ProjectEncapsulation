@@ -1,20 +1,16 @@
 #pragma once
 
+#include <unordered_map>
+#include "ColorRGBA.h"
 #include "Sprite.h"
-#include "Shape.h"
+#include "Circle.h"
 
 class Window
 {
+protected:
+    std::unordered_map<std::string, Circle*> circles;
+
 public:
-    struct ColorRGBA {
-        unsigned char r, g, b, a;
-
-        // Constructeur pour initialiser la couleur
-        ColorRGBA(unsigned char r, unsigned char g, unsigned char b, unsigned char a)
-            : r(r), g(g), b(b), a(a) {
-        }
-    };
-
     virtual ~Window() = default;
 
     virtual void init() = 0;
@@ -23,7 +19,9 @@ public:
     virtual void clear(const ColorRGBA& color) = 0;
     virtual void beginDrawing() = 0;
 	virtual void endDrawing() = 0;
-    virtual void drawSprite(const Sprite& sprite) = 0;
-	virtual void drawShape(const Shape& shape) = 0;
+	virtual void createCircle(std::string label, int x, int y, const ColorRGBA& color, float radius) = 0;
+	virtual void createSprite(int x, int y, const std::string& filePath) = 0;
+    virtual void drawSprite(std::string label) = 0;
+	virtual void drawCircle(std::string label) = 0;
 	virtual void close() = 0;
 };

@@ -1,7 +1,9 @@
 #pragma once
 
-#include "Window.h"
+#include <iostream>
 #include "raylib.h"
+#include "Window.h"
+#include "CircleRaylib.h"
 
 class WindowRaylib : public Window {
 public:
@@ -11,7 +13,9 @@ public:
     void clear(const ColorRGBA& color) override;
     void beginDrawing() override;
     void endDrawing() override;
-    void drawSprite(const Sprite& sprite) override;
-    void drawShape(const Shape& shape) override;
+    void createCircle(std::string label, int x, int y, const ColorRGBA& color, float radius) override;
+	void createSprite(int x, int y, const std::string& filePath) override;
+    void drawSprite(std::string label) override;
+    void drawCircle(std::string label) override;
 	void close() override;
 };

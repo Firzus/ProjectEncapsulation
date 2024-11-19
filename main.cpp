@@ -45,9 +45,12 @@ int main()
 		}
 	}
 
-	Window::ColorRGBA bgColor(0, 255, 0, 255);
+	ColorRGBA bgColor(0, 255, 0, 255);
+	ColorRGBA shapeColor(255, 0, 0, 255);
 
-	// Initialisation et utilisation de l'encapsulation choisie
+	window->createCircle("cercle1", 100, 100, shapeColor, 50);
+	window->createCircle("cercle2", 300, 300, shapeColor, 100);
+
 	if (window)
 	{
 		window->init();

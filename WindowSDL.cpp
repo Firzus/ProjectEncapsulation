@@ -36,7 +36,7 @@ bool WindowSDL::isOpen() const
 
 void WindowSDL::clear(const ColorRGBA& color)
 {
-	SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+	SDL_SetRenderDrawColor(renderer, color.R(), color.G(), color.B(), color.A());
 	SDL_RenderClear(renderer);
 }
 
@@ -89,11 +89,21 @@ void WindowSDL::endDrawing()
     SDL_RenderPresent(renderer);
 }
 
-void WindowSDL::drawSprite(const Sprite& sprite)
+void WindowSDL::createCircle(std::string label, int x, int y, const ColorRGBA& color, float radius)
 {
 }
 
-void WindowSDL::drawShape(const Shape& shape)
+void WindowSDL::createSprite(int x, int y, const std::string& filePath)
+{
+
+}
+
+void WindowSDL::drawSprite(std::string label)
+{
+
+}
+
+void WindowSDL::drawCircle(std::string label)
 {
 }
 

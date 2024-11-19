@@ -53,25 +53,3 @@ void CircleSDL::draw() const
         }
     }
 }
-
-void* CircleSDL::getData() const
-{
-	return nullptr;
-}
-
-void CircleSDL::setPosition(int x, int y)
-{
-	posX = x;
-	posY = y;
-}
-
-void CircleSDL::moove(int x, int y)
-{
-    posX += x;
-    posY += y;
-}
-
-void CircleSDL::setColor(const ColorRGBA& newColor)
-{
-	color = newColor;
-}

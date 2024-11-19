@@ -13,8 +13,4 @@ public:
 	}
 
 	void draw() const override;
-	void* getData() const override;
-	void setPosition(int x, int y) override;
-	void moove(int x, int y) override;
-	void setColor(const ColorRGBA& newColor) override;
 };

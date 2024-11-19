@@ -11,11 +11,12 @@ protected:
 	void* renderer;
 
 public:
-	Circle(const std::string& label, int x, int y, const ColorRGBA& color, float radius) : Entity(), color(color), radius(radius)
+	Circle(const std::string& label, int x, int y, const ColorRGBA& color, float radius, void* renderer) : Entity(), color(color), radius(radius)
 	{
 		this->label = label;
 		this->posX = x;
 		this->posY = y;
+		this->renderer = renderer;
 	}
 
 	virtual ~Circle() = default;

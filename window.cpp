@@ -1,5 +1,17 @@
 #include "window.h"
 
+void Window::update()
+{
+    for (auto& pair : circles) {
+        pair.second->draw();
+    }
+}
+
+void Window::close()
+{
+    delete this;
+}
+
 void Window::createCircle(std::string label, int x, int y, const ColorRGBA& color, float radius)
 {
     if (circles.find(label) != circles.end()) {
@@ -12,6 +24,7 @@ void Window::removeCircle(const std::string& label)
 {
 	std::unordered_map<std::string, Circle*>::iterator it = circles.find(label);
 	if (it != circles.end()) {
+        delete it->second;
 		circles.erase(it);
 	}
 }

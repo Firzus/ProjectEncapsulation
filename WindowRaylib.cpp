@@ -31,6 +31,8 @@ bool WindowRaylib::isOpen() const
 
 void WindowRaylib::close()
 {
+	Window::close();
+
 	CloseWindow();
 }
 

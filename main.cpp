@@ -10,7 +10,7 @@ int main()
 
 	Window* window = nullptr;
 
-	std::cout << "Project Encapsulation - BOROS Theo / PRIEU Lilian\n\n";
+	std::cout << "Projet Encapsulation - BOROS Theo / PRIEU Lilian\n\n";
 
 	while (!isSetUp)
 	{
@@ -55,33 +55,28 @@ int main()
 	ColorRGBA shapeColor(255, 0, 0, 255);
 
 	window->createCircle("cercle1", 100, 100, shapeColor, 50);
-	window->createCircle("cercle2", 300, 300, shapeColor, 100);
 
 	while (window->isOpen())
 	{
+		// Inputs handling (Raylib)
+		//if (IsKeyDown(KEY_RIGHT) && window->getCircle("cercle1") != nullptr)
+		//{
+		//	window->getCircle("cercle1")->move(1, 0);
+		//}
+
+		//if (IsKeyDown(KEY_SPACE) && window->getCircle("cercle1") != nullptr)
+		//{
+		//	window->removeCircle("cercle1");
+		//}
+
 		// Draw
 		window->clear(bgColor);
 		window->beginDrawing();
-
-		window->getCircle("cercle1")->draw();
-		window->getCircle("cercle2")->draw();
-
+		window->update();
 		window->endDrawing();
-
-		// Update
-		window->getCircle("cercle1")->move(1, 0);
-
-		// Inputs handling (Raylib)
-		if (IsKeyDown(KEY_DOWN)) window->getCircle("cercle2")->move(0, 1);
-		if (IsKeyDown(KEY_UP)) window->getCircle("cercle2")->move(0, -1);
-		if (IsKeyDown(KEY_LEFT)) window->getCircle("cercle2")->move(-1, 0);
-		if (IsKeyDown(KEY_RIGHT)) window->getCircle("cercle2")->move(1, 0);
-
-		if (IsKeyDown(KEY_SPACE)) window->removeCircle("cercle2");
 	}
 
 	window->close();
-	delete window;
 	
 	return 0;
 }

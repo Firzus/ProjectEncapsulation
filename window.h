@@ -20,8 +20,9 @@ public:
     virtual void clear(const ColorRGBA& color) = 0;
     virtual void beginDrawing() = 0;
 	virtual void endDrawing() = 0;
+	virtual void update();
     virtual bool isOpen() const = 0;
-	virtual void close() = 0;
+	virtual void close();
 
 	// Entities
 	virtual void createCircle(std::string label, int x, int y, const ColorRGBA& color, float radius);

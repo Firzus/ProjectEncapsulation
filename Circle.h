@@ -19,6 +19,12 @@ public:
 
 	virtual ~Circle() = default;
 
+	void setColor(const ColorRGBA& newColor);
+
+	// Physics
+	virtual void onCollide(Entity* other) override;
+	virtual bool isColliding(Entity* other) override;
+
 	// Getters
 	ColorRGBA getColor() const { return color; }
 	float getRadius() const { return radius; }

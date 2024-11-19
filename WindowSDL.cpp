@@ -13,6 +13,8 @@ void WindowSDL::init()
 
 void WindowSDL::createWindow(int width, int height, const std::string& title)
 {
+    Window::createWindow(width, height, title);
+
     window = SDL_CreateWindow(
         title.c_str(),
         SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,

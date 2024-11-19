@@ -52,22 +52,25 @@ int main()
 
 	// Props
 	ColorRGBA bgColor(255, 255, 255, 255);
-	ColorRGBA shapeColor(255, 0, 0, 255);
+	ColorRGBA shapeColor1(255, 0, 0, 255);
+	ColorRGBA shapeColor2(0, 255, 0, 255);
 
-	window->createCircle("cercle1", 100, 100, shapeColor, 50);
+	window->createCircle("circle1", 100, 100, shapeColor1, 50);
+	window->createCircle("circle2", 300, 100, shapeColor2, 50);
 
 	while (window->isOpen())
-	{
-		// Inputs handling (Raylib)
-		//if (IsKeyDown(KEY_RIGHT) && window->getCircle("cercle1") != nullptr)
-		//{
-		//	window->getCircle("cercle1")->move(1, 0);
-		//}
+	{	
+		// Physics
+		if (window->getCircle("circle1")->isColliding(window->getCircle("circle2")))
+		{
+			window->removeCircle("circle2");
+		}
 
-		//if (IsKeyDown(KEY_SPACE) && window->getCircle("cercle1") != nullptr)
-		//{
-		//	window->removeCircle("cercle1");
-		//}
+		// Inputs handling (Raylib)
+		if (window->getCircle("circle1") != nullptr)
+		{
+			window->getCircle("circle1")->move(1, 0);
+		}
 
 		// Draw
 		window->clear(bgColor);

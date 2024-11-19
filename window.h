@@ -9,6 +9,8 @@
 class Window
 {
 protected:
+	int windowWidth, windowHeight;
+
     std::unordered_map<std::string, Circle*> circles;
 
 public:
@@ -16,7 +18,7 @@ public:
 
 	// Window
     virtual void init() = 0;
-    virtual void createWindow(int width, int height, const std::string& title) = 0;
+    virtual void createWindow(int width, int height, const std::string& title);
     virtual void clear(const ColorRGBA& color) = 0;
     virtual void beginDrawing() = 0;
 	virtual void endDrawing() = 0;
@@ -33,5 +35,5 @@ public:
 	virtual void setFrameRate(int frameRate) = 0;
 
 	// Getters
-	virtual Circle* getCircle(const std::string& label);
+	Circle* getCircle(const std::string& label);
 };

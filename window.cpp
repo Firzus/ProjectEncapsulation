@@ -1,7 +1,14 @@
 #include "window.h"
 
+void Window::createWindow(int width, int height, const std::string& title)
+{
+	windowWidth = width;
+	windowHeight = height;
+}
+
 void Window::update()
 {
+	// Draw
     for (auto& pair : circles) {
         pair.second->draw();
     }

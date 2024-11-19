@@ -4,6 +4,8 @@ void WindowRaylib::init() {}
 
 void WindowRaylib::createWindow(int width, int height, const std::string& title)
 {
+	Window::createWindow(width, height, title);
+
     InitWindow(width, height, title.c_str());
 }
 

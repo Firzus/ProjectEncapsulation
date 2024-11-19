@@ -8,12 +8,13 @@
 class CircleSDL : public Circle
 {
 public:
-	CircleSDL(std::string label, int x, int y, const ColorRGBA& color, float radius)
-		: Circle(label, x, y, color, radius) {
+	CircleSDL(std::string label, int x, int y, const ColorRGBA& color, float radius, void* renderer)
+		: Circle(label, x, y, color, radius, renderer) {
 	}
 
-	void draw(void* renderer) const override;
+	void draw() const override;
 	void* getData() const override;
 	void setPosition(int x, int y) override;
+	void moove(int x, int y) override;
 	void setColor(const ColorRGBA& newColor) override;
 };

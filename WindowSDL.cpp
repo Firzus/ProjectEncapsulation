@@ -93,12 +93,9 @@ void WindowSDL::endDrawing()
 
 void WindowSDL::createCircle(std::string label, int x, int y, const ColorRGBA& color, float radius)
 {
-    if (circles.find(label) != circles.end()) {
-        std::cerr << "Un cercle avec l'identifiant '" << label << "' existe déjà.\n";
-        return;
-    }
+    Window::createCircle(label, x, y, color, radius);
 
-    circles[label] = new CircleSDL(label, x, y, color, radius);
+    circles[label] = new CircleSDL(label, x, y, color, radius, renderer);
 }
 
 void WindowSDL::createSprite(int x, int y, const std::string& filePath)

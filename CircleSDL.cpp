@@ -1,6 +1,6 @@
 #include "CircleSDL.h"
 
-void CircleSDL::draw(void* renderer) const
+void CircleSDL::draw() const
 {
     SDL_Renderer* sdlRenderer = static_cast<SDL_Renderer*>(renderer);
 
@@ -63,6 +63,12 @@ void CircleSDL::setPosition(int x, int y)
 {
 	posX = x;
 	posY = y;
+}
+
+void CircleSDL::moove(int x, int y)
+{
+    posX += x;
+    posY += y;
 }
 
 void CircleSDL::setColor(const ColorRGBA& newColor)

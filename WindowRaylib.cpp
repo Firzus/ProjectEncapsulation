@@ -33,7 +33,7 @@ void WindowRaylib::createCircle(std::string label, int x, int y, const ColorRGBA
 {
 	Window::createCircle(label, x, y, color, radius);
 
-    circles[label] = new CircleRaylib(label, x, y, color, radius);
+    circles[label] = new CircleRaylib(label, x, y, color, radius, NULL);
 }
 
 void WindowRaylib::createSprite(int x, int y, const std::string& filePath)

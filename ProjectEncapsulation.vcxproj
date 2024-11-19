@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CircleRaylib.cpp" />
+    <ClCompile Include="CircleSDL.cpp" />
     <ClCompile Include="ColorRGBA.cpp" />
     <ClCompile Include="FPSCounter.cpp" />
     <ClCompile Include="main.cpp" />
@@ -142,6 +143,7 @@
   <ItemGroup>
     <ClInclude Include="Circle.h" />
     <ClInclude Include="CircleRaylib.h" />
+    <ClInclude Include="CircleSDL.h" />
     <ClInclude Include="ColorRGBA.h" />
     <ClInclude Include="FPSCounter.h" />
     <ClInclude Include="Sprite.h" />

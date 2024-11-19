@@ -2,15 +2,15 @@
 #define SDL_MAIN_HANDLED
 
 #include "Window.h"
+#include "CircleSDL.h"
+#include <iostream>
 #include <stdexcept>
-
-#define SDL_MAIN_HANDLED
 #include <SDL2/SDL.h>
 
 class WindowSDL : public Window {
 SDL_Window* window = nullptr;
-SDL_Renderer* renderer = nullptr;
 SDL_Event event;
+SDL_Renderer* renderer = nullptr;
 SDL_Surface* image = NULL;
 SDL_Texture* texture = NULL;
 SDL_Rect dstrect;

@@ -1,13 +1,14 @@
 #pragma once
-
-#include "raylib.h"
+#define SDL_MAIN_HANDLED
 
 #include "Circle.h"
+#include <stdexcept>
+#include <SDL2/SDL.h>
 
-class CircleRaylib : public Circle
+class CircleSDL : public Circle
 {
 public:
-	CircleRaylib(std::string label, int x, int y, const ColorRGBA& color, float radius)
+	CircleSDL(std::string label, int x, int y, const ColorRGBA& color, float radius)
 		: Circle(label, x, y, color, radius) {
 	}
 
@@ -16,4 +17,3 @@ public:
 	void setPosition(int x, int y) override;
 	void setColor(const ColorRGBA& newColor) override;
 };
-

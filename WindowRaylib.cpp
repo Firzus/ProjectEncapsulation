@@ -49,9 +49,9 @@ void WindowRaylib::drawSprite(std::string label)
 
 void WindowRaylib::drawCircle(std::string label)
 {
-    auto it = circles.find(label);
+    std::unordered_map<std::string, Circle*>::iterator it = circles.find(label);
     if (it != circles.end()) {
-        it->second->draw();
+        it->second->draw(NULL);
     }
     else {
         std::cerr << "Cercle avec l'identifiant '" << label << "' introuvable.\n";

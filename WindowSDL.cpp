@@ -52,9 +52,6 @@ void WindowSDL::beginDrawing()
         // Events
     }
 
-    // Drawing color
-    SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
-
     /*
     SDL_Rect rect;
     rect.x = 250;
@@ -71,16 +68,18 @@ void WindowSDL::beginDrawing()
     SDL_RenderFillCircle(renderer, 200, 200, 50);
     */
 
+    /*
     if (!isImageLoaded)
     {
         image = SDL_LoadBMP("x64/Debug/tree.bmp");
         texture = SDL_CreateTextureFromSurface(renderer, image);
-        dstrect = { 20, 20, 400, 600 };   // posx, posy, length, height
+        dstrect = { 50, 20, 700, 400 };   // posx, posy, length, height
 
         isImageLoaded = true;
     }
     // copy the texture to the rendering context
     SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+    */
 
 }
 
@@ -91,6 +90,12 @@ void WindowSDL::endDrawing()
 
 void WindowSDL::createCircle(std::string label, int x, int y, const ColorRGBA& color, float radius)
 {
+    if (circles.find(label) != circles.end()) {
+        std::cerr << "Un cercle avec l'identifiant '" << label << "' existe déjà.\n";
+        return;
+    }
+
+    circles[label] = new CircleSDL(label, x, y, color, radius);
 }
 
 void WindowSDL::createSprite(int x, int y, const std::string& filePath)
@@ -105,6 +110,14 @@ void WindowSDL::drawSprite(std::string label)
 
 void WindowSDL::drawCircle(std::string label)
 {
+    std::unordered_map<std::string, Circle*>::iterator it = circles.find(label);
+    if (it != circles.end()) 
+    {
+        it->second->draw(renderer);
+    }
+    else {
+        std::cerr << "Cercle avec l'identifiant '" << label << "' introuvable.\n";
+    }
 }
 
 void WindowSDL::close()
@@ -133,48 +146,6 @@ void WindowSDL::close()
 
 WindowSDL::~WindowSDL() {
     close();
-}
-
-
-void WindowSDL::SDL_RenderDrawCircle(SDL_Renderer* renderer, int x, int y, int radius)
-{
-    int offsetx, offsety, d;
-    int status;
-
-    offsetx = 0;
-    offsety = radius;
-    d = radius - 1;
-    status = 0;
-
-    while (offsety >= offsetx) {
-        status += SDL_RenderDrawPoint(renderer, x + offsetx, y + offsety);
-        status += SDL_RenderDrawPoint(renderer, x + offsety, y + offsetx);
-        status += SDL_RenderDrawPoint(renderer, x - offsetx, y + offsety);
-        status += SDL_RenderDrawPoint(renderer, x - offsety, y + offsetx);
-        status += SDL_RenderDrawPoint(renderer, x + offsetx, y - offsety);
-        status += SDL_RenderDrawPoint(renderer, x + offsety, y - offsetx);
-        status += SDL_RenderDrawPoint(renderer, x - offsetx, y - offsety);
-        status += SDL_RenderDrawPoint(renderer, x - offsety, y - offsetx);
-
-        if (status < 0) {
-            status = -1;
-            break;
-        }
-
-        if (d >= 2 * offsetx) {
-            d -= 2 * offsetx + 1;
-            offsetx += 1;
-        }
-        else if (d < 2 * (radius - offsety)) {
-            d += 2 * offsety - 1;
-            offsety -= 1;
-        }
-        else {
-            d += 2 * (offsety - offsetx - 1);
-            offsety -= 1;
-            offsetx += 1;
-        }
-    }
 }
 
 

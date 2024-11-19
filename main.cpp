@@ -47,9 +47,10 @@ int main()
 
 	ColorRGBA bgColor(0, 255, 0, 255);
 	ColorRGBA shapeColor(255, 0, 0, 255);
+	ColorRGBA shapeColor2(0, 0, 255, 255);
 
 	window->createCircle("cercle1", 100, 100, shapeColor, 50);
-	window->createCircle("cercle2", 300, 300, shapeColor, 100);
+	window->createCircle("cercle2", 300, 300, shapeColor2, 100);
 
 	if (window)
 	{
@@ -60,6 +61,9 @@ int main()
 		{
 			window->clear(bgColor);
 			window->beginDrawing();
+
+			window->drawCircle("cercle1");
+			window->drawCircle("cercle2");
 
 			window->endDrawing();
 		}

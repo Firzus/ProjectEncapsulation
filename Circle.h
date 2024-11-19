@@ -19,7 +19,7 @@ public:
 
 	virtual ~Circle() = default;
 
-	virtual void draw() const = 0;
+	virtual void draw(void* renderer) const = 0;
 	// Renvoie un pointeur générique vers les données
 	virtual void* getData() const = 0;
 	virtual void setPosition(int x, int y) = 0;

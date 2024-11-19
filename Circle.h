@@ -1,8 +1,7 @@
 #pragma once
 
-#include <string>
-#include "ColorRGBA.h"
 #include "Entity.h"
+#include "ColorRGBA.h"
 
 class Circle : public Entity {
 protected:
@@ -19,13 +18,13 @@ public:
 
 	virtual ~Circle() = default;
 
-	void setColor(const ColorRGBA& newColor);
-
 	// Physics
-	virtual void onCollide(Entity* other) override;
 	virtual bool isColliding(Entity* other) override;
 
-	// Getters
+	// Getters - Setters
 	ColorRGBA getColor() const { return color; }
 	float getRadius() const { return radius; }
+
+	void setColor(const ColorRGBA& newColor) { color = newColor; }
+	void setRadius(float newRadius) { radius = newRadius; }
 };

@@ -5,12 +5,14 @@
 #include "ColorRGBA.h"
 #include "Circle.h"
 #include "Sprite.h"
+#include "Text.h"
 
 class Window
 {
 protected:
-	int windowWidth, windowHeight;
+	int windowWidth = 0, windowHeight = 0;
 
+	std::unordered_map<std::string, Text*> texts;
     std::unordered_map<std::string, Circle*> circles;
 
 public:
@@ -27,8 +29,12 @@ public:
 	virtual void close();
 
 	// Entities
+	virtual void createText(std::string label, int x, int y, const ColorRGBA& color, std::string content, int fontSize);
+	virtual void removeText(const std::string& label);
+
 	virtual void createCircle(std::string label, int x, int y, const ColorRGBA& color, float radius);
 	virtual void removeCircle(const std::string& label);
+
 	virtual void createSprite(int x, int y, const std::string& filePath) = 0;
 
 	// Utils
@@ -36,4 +42,5 @@ public:
 
 	// Getters
 	Circle* getCircle(const std::string& label);
+	Text* getText(const std::string& label);
 };

@@ -52,21 +52,24 @@ int main()
 
 	// Props
 	ColorRGBA bgColor(255, 255, 255, 255);
+	ColorRGBA fpsColor(0, 0, 0, 255);
 	ColorRGBA shapeColor1(255, 0, 0, 255);
 	ColorRGBA shapeColor2(0, 255, 0, 255);
 
 	window->createCircle("circle1", 100, 100, shapeColor1, 50);
 	window->createCircle("circle2", 300, 100, shapeColor2, 50);
 
+	int fps = 60;
+	window->createText("fpsText", 10, 10, fpsColor, std::to_string(fps) + " fps", 16);
+
 	while (window->isOpen())
-	{	
+	{
 		// Physics
 		if (window->getCircle("circle1")->isColliding(window->getCircle("circle2")))
 		{
 			window->removeCircle("circle2");
 		}
 
-		// Inputs handling (Raylib)
 		if (window->getCircle("circle1") != nullptr)
 		{
 			window->getCircle("circle1")->move(1, 0);

@@ -5,7 +5,7 @@
 class Entity
 {
 protected:
-	int posX, posY;
+	int posX = 0, posY = 0;
 	std::string label;
 
 public:
@@ -17,7 +17,6 @@ public:
 	virtual void move(int x, int y);
 
 	// Physics
-	virtual void onCollide(Entity* other) = 0;
 	virtual bool isColliding(Entity* other) = 0;
 
 	// Getters

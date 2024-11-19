@@ -24,8 +24,12 @@ public:
 	void close() override;
 
 	// Entities
+	void createText(std::string label, int x, int y, const ColorRGBA& color, std::string content, int fontSize) override;
+	void removeText(const std::string& label) override;
+
 	void createCircle(std::string label, int x, int y, const ColorRGBA& color, float radius) override;
 	void removeCircle(const std::string& label) override;
+
 	void createSprite(int x, int y, const std::string& filePath) override;
 	
 	// Utils

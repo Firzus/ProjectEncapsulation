@@ -4,12 +4,9 @@ void WindowRaylib::init() {}
 
 void WindowRaylib::createWindow(int width, int height, const std::string& title)
 {
-    InitWindow(width, height, title.c_str());
-}
+	Window::createWindow(width, height, title);
 
-bool WindowRaylib::isOpen() const
-{
-	return !WindowShouldClose();
+    InitWindow(width, height, title.c_str());
 }
 
 void WindowRaylib::clear(const ColorRGBA& color)
@@ -29,6 +26,18 @@ void WindowRaylib::endDrawing()
 	EndDrawing();
 }
 
+bool WindowRaylib::isOpen() const
+{
+	return !WindowShouldClose();
+}
+
+void WindowRaylib::close()
+{
+	Window::close();
+
+	CloseWindow();
+}
+
 void WindowRaylib::createCircle(std::string label, int x, int y, const ColorRGBA& color, float radius)
 {
 	Window::createCircle(label, x, y, color, radius);
@@ -36,14 +45,14 @@ void WindowRaylib::createCircle(std::string label, int x, int y, const ColorRGBA
     circles[label] = new CircleRaylib(label, x, y, color, radius, NULL);
 }
 
+void WindowRaylib::removeCircle(const std::string& label)
+{
+	Window::removeCircle(label);
+}
+
 void WindowRaylib::createSprite(int x, int y, const std::string& filePath)
 {
 
-}
-
-void WindowRaylib::close()
-{
-	CloseWindow();
 }
 
 void WindowRaylib::setFrameRate(int frameRate)

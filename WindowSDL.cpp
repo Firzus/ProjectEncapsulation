@@ -13,6 +13,8 @@ void WindowSDL::init()
 
 void WindowSDL::createWindow(int width, int height, const std::string& title)
 {
+    Window::createWindow(width, height, title);
+
     window = SDL_CreateWindow(
         title.c_str(),
         SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
@@ -106,6 +108,11 @@ void WindowSDL::createCircle(std::string label, int x, int y, const ColorRGBA& c
     Window::createCircle(label, x, y, color, radius);
 
     circles[label] = new CircleSDL(label, x, y, color, radius, renderer);
+}
+
+void WindowSDL::removeCircle(const std::string& label)
+{
+
 }
 
 void WindowSDL::createSprite(int x, int y, const std::string& filePath)

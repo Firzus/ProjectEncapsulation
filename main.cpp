@@ -10,7 +10,7 @@ int main()
 
 	Window* window = nullptr;
 
-	std::cout << "Project Encapsulation - BOROS Theo / PRIEU Lilian\n\n";
+	std::cout << "Projet Encapsulation - BOROS Theo / PRIEU Lilian\n\n";
 
 	while (!isSetUp)
 	{
@@ -52,30 +52,34 @@ int main()
 
 	// Props
 	ColorRGBA bgColor(255, 255, 255, 255);
-	ColorRGBA shapeColor(255, 0, 0, 255);
-	ColorRGBA shapeColor2(0, 0, 255, 255);
+	ColorRGBA shapeColor1(255, 0, 0, 255);
+	ColorRGBA shapeColor2(0, 255, 0, 255);
 
-	window->createCircle("cercle1", 100, 100, shapeColor, 50);
-	window->createCircle("cercle2", 300, 300, shapeColor2, 100);
+	window->createCircle("circle1", 100, 100, shapeColor1, 50);
+	window->createCircle("circle2", 300, 100, shapeColor2, 50);
 
 	while (window->isOpen())
-	{
+	{	
+		// Physics
+		if (window->getCircle("circle1")->isColliding(window->getCircle("circle2")))
+		{
+			window->removeCircle("circle2");
+		}
+
+		// Inputs handling (Raylib)
+		if (window->getCircle("circle1") != nullptr)
+		{
+			window->getCircle("circle1")->move(1, 0);
+		}
+
 		// Draw
 		window->clear(bgColor);
 		window->beginDrawing();
-
-		window->getCircle("cercle1")->draw();
-		window->getCircle("cercle2")->draw();
-
+		window->update();
 		window->endDrawing();
-
-		// Update
-		window->getCircle("cercle1")->moove(1, 0);
-		window->getCircle("cercle2")->moove(1, 1);
 	}
 
 	window->close();
-	delete window;
 	
 	return 0;
 }

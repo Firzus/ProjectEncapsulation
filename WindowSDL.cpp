@@ -1,5 +1,9 @@
 #include "WindowSDL.h"
 
+WindowSDL::~WindowSDL() {
+    close();
+}
+
 void WindowSDL::init()
 {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -55,15 +59,6 @@ void WindowSDL::createSprite(int x, int y, const std::string& filePath)
 
 }
 
-void WindowSDL::drawSprite(std::string label)
-{
-
-}
-
-void WindowSDL::drawCircle(std::string label)
-{
-}
-
 void WindowSDL::close()
 {
     if (renderer) {
@@ -78,6 +73,6 @@ void WindowSDL::close()
     open = false;
 }
 
-WindowSDL::~WindowSDL() {
-    close();
+void WindowSDL::setFrameRate(int frameRate)
+{
 }

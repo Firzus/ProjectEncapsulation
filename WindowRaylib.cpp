@@ -31,34 +31,22 @@ void WindowRaylib::endDrawing()
 
 void WindowRaylib::createCircle(std::string label, int x, int y, const ColorRGBA& color, float radius)
 {
-    if (circles.find(label) != circles.end()) {
-        std::cerr << "Un cercle avec l'identifiant '" << label << "' existe déjà.\n";
-        return;
-    }
+	Window::createCircle(label, x, y, color, radius);
 
     circles[label] = new CircleRaylib(label, x, y, color, radius);
 }
 
 void WindowRaylib::createSprite(int x, int y, const std::string& filePath)
 {
-}
 
-void WindowRaylib::drawSprite(std::string label)
-{
-}
-
-void WindowRaylib::drawCircle(std::string label)
-{
-    auto it = circles.find(label);
-    if (it != circles.end()) {
-        it->second->draw();
-    }
-    else {
-        std::cerr << "Cercle avec l'identifiant '" << label << "' introuvable.\n";
-    }
 }
 
 void WindowRaylib::close()
 {
 	CloseWindow();
+}
+
+void WindowRaylib::setFrameRate(int frameRate)
+{
+	SetTargetFPS(frameRate);
 }

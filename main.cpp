@@ -45,32 +45,36 @@ int main()
 		}
 	}
 
-	ColorRGBA bgColor(0, 255, 0, 255);
+	// Program
+	window->init();
+	window->createWindow(800, 600, "Window");
+	window->setFrameRate(60);
+
+	// Props
+	ColorRGBA bgColor(255, 255, 255, 255);
 	ColorRGBA shapeColor(255, 0, 0, 255);
 
 	window->createCircle("cercle1", 100, 100, shapeColor, 50);
 	window->createCircle("cercle2", 300, 300, shapeColor, 100);
 
-	if (window)
+	while (window->isOpen())
 	{
-		window->init();
-		window->createWindow(800, 600, "Nice Ass");
+		// Draw
+		window->clear(bgColor);
+		window->beginDrawing();
 
-		while (window->isOpen())
-		{
-			window->clear(bgColor);
-			window->beginDrawing();
+		window->getCircle("cercle1")->draw();
+		window->getCircle("cercle2")->draw();
 
-			window->drawCircle("cercle1");
-			window->drawCircle("cercle2");
+		window->endDrawing();
 
-			window->endDrawing();
-		}
-
-		window->close();
-
-		delete window;
+		// Update
+		window->getCircle("cercle1")->moove(1, 0);
+		window->getCircle("cercle2")->moove(1, 1);
 	}
 
+	window->close();
+	delete window;
+	
 	return 0;
 }

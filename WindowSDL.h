@@ -22,7 +22,6 @@ public:
 	void endDrawing() override;
 	void createCircle(std::string label, int x, int y, const ColorRGBA& color, float radius) override;
 	void createSprite(int x, int y, const std::string& filePath) override;
-	void drawSprite(std::string label) override;
-	void drawCircle(std::string label) override;
 	void close() override;
+	void setFrameRate(int frameRate) override;
 };

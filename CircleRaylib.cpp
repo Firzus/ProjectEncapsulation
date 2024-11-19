@@ -16,6 +16,12 @@ void CircleRaylib::setPosition(int x, int y)
 	posY = y;
 }
 
+void CircleRaylib::moove(int x, int y)
+{
+	posX += x;
+	posY += y;
+}
+
 void CircleRaylib::setColor(const ColorRGBA& newColor)
 {
 	color = newColor;

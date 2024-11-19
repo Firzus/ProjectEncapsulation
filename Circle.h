@@ -13,7 +13,7 @@ protected:
 	float radius;
 
 public:
-	Circle(std::string label, int x, int y, const ColorRGBA& color, int radius)
+	Circle(std::string label, int x, int y, const ColorRGBA& color, float radius)
 		: label(label), posX(x), posY(y), color(color), radius(radius) {
 	}
 
@@ -23,6 +23,7 @@ public:
 	// Renvoie un pointeur générique vers les données
 	virtual void* getData() const = 0;
 	virtual void setPosition(int x, int y) = 0;
+	virtual void moove(int x, int y) = 0;
 	virtual void setColor(const ColorRGBA& newColor) = 0;
 
 	// Getters

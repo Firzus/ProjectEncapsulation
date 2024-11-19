@@ -1,7 +1,6 @@
 #pragma once
 
 #include "raylib.h"
-
 #include "Circle.h"
 
 class CircleRaylib : public Circle
@@ -14,6 +13,7 @@ public:
 	void draw(void* renderer) const override;
 	void* getData() const override;
 	void setPosition(int x, int y) override;
+	void moove(int x, int y) override;
 	void setColor(const ColorRGBA& newColor) override;
 };
 

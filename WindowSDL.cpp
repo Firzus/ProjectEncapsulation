@@ -1,5 +1,8 @@
 #include "WindowSDL.h"
 
+WindowSDL::~WindowSDL() {
+    close();
+}
 
 void WindowSDL::init()
 {
@@ -103,23 +106,6 @@ void WindowSDL::createSprite(int x, int y, const std::string& filePath)
 
 }
 
-void WindowSDL::drawSprite(std::string label)
-{
-
-}
-
-void WindowSDL::drawCircle(std::string label)
-{
-    std::unordered_map<std::string, Circle*>::iterator it = circles.find(label);
-    if (it != circles.end()) 
-    {
-        it->second->draw(renderer);
-    }
-    else {
-        std::cerr << "Cercle avec l'identifiant '" << label << "' introuvable.\n";
-    }
-}
-
 void WindowSDL::close()
 {
     if (renderer) {
@@ -143,50 +129,6 @@ void WindowSDL::close()
     open = false;
 }
 
-
-WindowSDL::~WindowSDL() {
-    close();
-}
-
-
-void WindowSDL::SDL_RenderFillCircle(SDL_Renderer* renderer, int x, int y, int radius)
+void WindowSDL::setFrameRate(int frameRate)
 {
-    int offsetx, offsety, d;
-    int status;
-
-    offsetx = 0;
-    offsety = radius;
-    d = radius - 1;
-    status = 0;
-
-    while (offsety >= offsetx) {
-
-        status += SDL_RenderDrawLine(renderer, x - offsety, y + offsetx,
-            x + offsety, y + offsetx);
-        status += SDL_RenderDrawLine(renderer, x - offsetx, y + offsety,
-            x + offsetx, y + offsety);
-        status += SDL_RenderDrawLine(renderer, x - offsetx, y - offsety,
-            x + offsetx, y - offsety);
-        status += SDL_RenderDrawLine(renderer, x - offsety, y - offsetx,
-            x + offsety, y - offsetx);
-
-        if (status < 0) {
-            status = -1;
-            break;
-        }
-
-        if (d >= 2 * offsetx) {
-            d -= 2 * offsetx + 1;
-            offsetx += 1;
-        }
-        else if (d < 2 * (radius - offsety)) {
-            d += 2 * offsety - 1;
-            offsety -= 1;
-        }
-        else {
-            d += 2 * (offsety - offsetx - 1);
-            offsety -= 1;
-            offsetx += 1;
-        }
-    }
 }

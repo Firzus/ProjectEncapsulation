@@ -55,6 +55,9 @@ void WindowSDL::beginDrawing()
         // Events
     }
 
+    // Start FPS counter
+    start = SDL_GetPerformanceCounter();
+
     /*
     SDL_Rect rect;
     rect.x = 250;
@@ -88,6 +91,13 @@ void WindowSDL::beginDrawing()
 
 void WindowSDL::endDrawing()
 {
+    // End FPS counter
+    end = SDL_GetPerformanceCounter();
+    float elapsedMS = (end - start) / (float)SDL_GetPerformanceFrequency() * 1000.0f;
+
+    // Cap to chosen FPS
+    SDL_Delay(floor((1000 / wantedFrameRate) - elapsedMS));
+
     SDL_RenderPresent(renderer);
 }
 
@@ -128,4 +138,5 @@ void WindowSDL::close()
 
 void WindowSDL::setFrameRate(int frameRate)
 {
+    wantedFrameRate = frameRate;
 }

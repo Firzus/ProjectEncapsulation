@@ -6,6 +6,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_timer.h>
 
 class WindowSDL : public Window {
 SDL_Window* window = nullptr;
@@ -14,6 +15,9 @@ SDL_Renderer* renderer = nullptr;
 SDL_Surface* image = NULL;
 SDL_Texture* texture = NULL;
 SDL_Rect dstrect;
+Uint64 start;
+Uint64 end;
+int wantedFrameRate = 0;
 bool isImageLoaded = false;
 bool open = false;
 

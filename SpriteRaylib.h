@@ -4,13 +4,17 @@
 #include "raylib.h"
 
 class SpriteRaylib : public Sprite {
-Texture2D texture;
-float x, y;
+private:
+	Texture2D texture;
 
 public:
-    void loadImage(const std::string& filePath) override;
-    // Renvoie un pointeur générique vers les données
-    virtual void* getData() const override;
-    virtual void setPosition(float x, float y) override;
-};
+	SpriteRaylib(std::string label, int x, int y, std::string texturePath, float rotation, float scale);
+	~SpriteRaylib() override;
 
+	void draw() const override;
+
+	bool isColliding(Entity* other) override;
+
+	// Getters - Setters
+	Texture2D getTexture() const { return texture; }
+};

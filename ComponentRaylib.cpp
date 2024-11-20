@@ -10,6 +10,11 @@ void ComponentRaylib::createCircle(std::string label, int x, int y, const ColorR
 	Component::createEntity(label, entities[label] = new CircleRaylib(label, x, y, color, radius, NULL));
 }
 
+void ComponentRaylib::createSprite(std::string label, int x, int y, std::string texturePath, float rotation, float scale)
+{
+	Component::createEntity(label, entities[label] = new SpriteRaylib(label, x, y, texturePath, rotation, scale));
+}
+
 void ComponentRaylib::loadFont(const std::string& fontPath)
 {
 	customFont = LoadFont(fontPath.c_str());

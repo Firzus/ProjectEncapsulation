@@ -69,6 +69,8 @@ int main()
 
 	component->createText("fpsText", 10, 10, fpsColor,"9999 fps", 16);
 
+	component->createSprite("sprite12", 300, 300, "assets/textures/sprite-test.png", 0, 1);
+
 	// Main loop
 	while (window->isOpen())
 	{

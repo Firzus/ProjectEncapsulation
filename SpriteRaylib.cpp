@@ -1,19 +1,21 @@
 #include "SpriteRaylib.h"
 
-void SpriteRaylib::loadImage(const std::string& filePath)
+SpriteRaylib::SpriteRaylib(std::string label, int x, int y, std::string texturePath, float rotation, float scale) : Sprite(label, x, y, texturePath, rotation, scale)
 {
-	Image image = LoadImage(filePath.c_str());  // Charge l'image depuis le fichier
-	texture = LoadTextureFromImage(image);     // Convertit l'image en texture
-	UnloadImage(image);
+	texture = LoadTexture(texturePath.c_str());
 }
 
-void* SpriteRaylib::getData() const
+SpriteRaylib::~SpriteRaylib()
 {
-	return nullptr;
+	UnloadTexture(texture);
 }
 
-void SpriteRaylib::setPosition(float x, float y)
+void SpriteRaylib::draw() const
 {
-	/*x = xPos;
-	y = yPos;*/
+	DrawTextureEx(texture, { (float)posX, (float)posY }, rotation, scale, WHITE);
+}
+
+bool SpriteRaylib::isColliding(Entity* other)
+{
+	return false;
 }

@@ -9,6 +9,11 @@ void ComponentSDL::createCircle(std::string label, int x, int y, const ColorRGBA
 
 }
 
+void ComponentSDL::createSprite(std::string label, int x, int y, std::string texturePath, float rotation, float scale)
+{
+
+}
+
 void ComponentSDL::loadFont(const std::string& fontPath)
 {
 }

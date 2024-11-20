@@ -18,8 +18,8 @@ int main()
 		//std::cin >> choice;
 
 		// For testing purposes
-		//choice = 1;
-		choice = 2;
+		choice = 1;
+		//choice = 2;
 
 		system("cls");
 
@@ -48,14 +48,18 @@ int main()
 	// Program
 	window->init();
 	window->createWindow(800, 600, "Window");
-	window->setFrameRate(60);
+	window->loadFont("assets/font/Roboto.ttf");
+	window->setFrameRate(10000);
 
 	// Props
 	ColorRGBA bgColor(255, 255, 255, 255);
+	ColorRGBA fpsColor(0, 0, 0, 255);
 	ColorRGBA shapeColor1(255, 0, 0, 255);
 	ColorRGBA shapeColor2(0, 255, 0, 255);
 	ColorRGBA shapeColor3(0, 180, 180, 255);
 
+
+	window->createText("fpsText", 10, 10, fpsColor,"9999 fps", 16);
 
 	window->createCircle("circle1", 100, 100, shapeColor1, 25);
 	window->createCircle("circle2", 300, 100, shapeColor2, 25);
@@ -66,7 +70,7 @@ int main()
 	window->getCircle("circle3")->setDirection(2, 3);
 
 	while (window->isOpen())
-	{	
+	{
 		// Physics
 		for (auto it = window->getCirclesList().begin(); it != window->getCirclesList().end(); ++it) 
 		{
@@ -103,10 +107,10 @@ int main()
 			}
 		}
 
-		// Draw
 		window->clear(bgColor);
 		window->beginDrawing();
-		window->update();
+		window->getText("fpsText")->setContent(std::to_string(window->getFrameRate()) + " fps");
+		window->draw();
 		window->endDrawing();
 	}
 

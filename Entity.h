@@ -5,8 +5,8 @@
 class Entity
 {
 protected:
-	int posX, posY;
-	int dirX, dirY;
+	int posX = 0, posY = 0;
+	int dirX = 0, dirY = 0;
 	std::string label;
 	int speed = 1;
 

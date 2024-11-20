@@ -109,6 +109,14 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -125,6 +133,14 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Circle.cpp" />
@@ -132,12 +148,14 @@
     <ClCompile Include="CircleSDL.cpp" />
     <ClCompile Include="ColorRGBA.cpp" />
     <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="FPSCounter.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteRaylib.cpp" />
     <ClCompile Include="SpriteSDL.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="TextRaylib.cpp" />
+    <ClCompile Include="TextSDL.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="WindowRaylib.cpp" />
     <ClCompile Include="WindowSDL.cpp" />
@@ -148,11 +166,13 @@
     <ClInclude Include="CircleSDL.h" />
     <ClInclude Include="ColorRGBA.h" />
     <ClInclude Include="Entity.h" />
-    <ClInclude Include="FPSCounter.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteRaylib.h" />
     <ClInclude Include="SpriteSDL.h" />
+    <ClInclude Include="Text.h" />
+    <ClInclude Include="TextRaylib.h" />
+    <ClInclude Include="TextSDL.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="WindowRaylib.h" />
     <ClInclude Include="WindowSDL.h" />

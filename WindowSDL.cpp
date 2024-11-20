@@ -143,7 +143,26 @@ void WindowSDL::close()
     open = false;
 }
 
+void WindowSDL::createText(std::string label, int x, int y, const ColorRGBA& color, std::string content, int fontSize)
+{
+
+}
+
+void WindowSDL::removeText(const std::string& label)
+{
+
+}
+
+void WindowSDL::loadFont(const std::string& fontPath)
+{
+}
+
 void WindowSDL::setFrameRate(int frameRate)
 {
     wantedFrameRate = frameRate;
+}
+
+int WindowSDL::getFrameRate() const
+{
+    return 0;
 }

@@ -104,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -126,6 +127,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -143,43 +145,43 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Circle.cpp" />
-    <ClCompile Include="CircleRaylib.cpp" />
-    <ClCompile Include="CircleSDL.cpp" />
-    <ClCompile Include="ColorRGBA.cpp" />
-    <ClCompile Include="Component.cpp" />
-    <ClCompile Include="ComponentRaylib.cpp" />
-    <ClCompile Include="ComponentSDL.cpp" />
-    <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Sprite.cpp" />
-    <ClCompile Include="SpriteRaylib.cpp" />
-    <ClCompile Include="SpriteSDL.cpp" />
-    <ClCompile Include="Text.cpp" />
-    <ClCompile Include="TextRaylib.cpp" />
-    <ClCompile Include="TextSDL.cpp" />
-    <ClCompile Include="Window.cpp" />
-    <ClCompile Include="WindowRaylib.cpp" />
-    <ClCompile Include="WindowSDL.cpp" />
+    <ClCompile Include="src\Circle.cpp" />
+    <ClCompile Include="src\CircleRaylib.cpp" />
+    <ClCompile Include="src\CircleSDL.cpp" />
+    <ClCompile Include="src\ColorRGBA.cpp" />
+    <ClCompile Include="src\Component.cpp" />
+    <ClCompile Include="src\ComponentRaylib.cpp" />
+    <ClCompile Include="src\ComponentSDL.cpp" />
+    <ClCompile Include="src\Entity.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Sprite.cpp" />
+    <ClCompile Include="src\SpriteRaylib.cpp" />
+    <ClCompile Include="src\SpriteSDL.cpp" />
+    <ClCompile Include="src\Text.cpp" />
+    <ClCompile Include="src\TextRaylib.cpp" />
+    <ClCompile Include="src\TextSDL.cpp" />
+    <ClCompile Include="src\window.cpp" />
+    <ClCompile Include="src\WindowRaylib.cpp" />
+    <ClCompile Include="src\WindowSDL.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Circle.h" />
-    <ClInclude Include="CircleRaylib.h" />
-    <ClInclude Include="CircleSDL.h" />
-    <ClInclude Include="ColorRGBA.h" />
-    <ClInclude Include="Component.h" />
-    <ClInclude Include="ComponentRaylib.h" />
-    <ClInclude Include="ComponentSDL.h" />
-    <ClInclude Include="Entity.h" />
-    <ClInclude Include="Sprite.h" />
-    <ClInclude Include="SpriteRaylib.h" />
-    <ClInclude Include="SpriteSDL.h" />
-    <ClInclude Include="Text.h" />
-    <ClInclude Include="TextRaylib.h" />
-    <ClInclude Include="TextSDL.h" />
-    <ClInclude Include="Window.h" />
-    <ClInclude Include="WindowRaylib.h" />
-    <ClInclude Include="WindowSDL.h" />
+    <ClInclude Include="include\Circle.h" />
+    <ClInclude Include="include\CircleRaylib.h" />
+    <ClInclude Include="include\CircleSDL.h" />
+    <ClInclude Include="include\ColorRGBA.h" />
+    <ClInclude Include="include\Component.h" />
+    <ClInclude Include="include\ComponentRaylib.h" />
+    <ClInclude Include="include\ComponentSDL.h" />
+    <ClInclude Include="include\Entity.h" />
+    <ClInclude Include="include\Sprite.h" />
+    <ClInclude Include="include\SpriteRaylib.h" />
+    <ClInclude Include="include\SpriteSDL.h" />
+    <ClInclude Include="include\Text.h" />
+    <ClInclude Include="include\TextRaylib.h" />
+    <ClInclude Include="include\TextSDL.h" />
+    <ClInclude Include="include\window.h" />
+    <ClInclude Include="include\WindowRaylib.h" />
+    <ClInclude Include="include\WindowSDL.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

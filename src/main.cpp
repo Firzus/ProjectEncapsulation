@@ -56,7 +56,7 @@ int main()
 	window->createWindow(800, 600, "Window");
 	window->setFrameRate(60);
 
-	component->loadFont("assets/font/Roboto.ttf");
+	component->loadFont("resources/fonts/Roboto.ttf");
 
 	// Props
 	ColorRGBA bgColor(255, 255, 255, 255);
@@ -69,7 +69,7 @@ int main()
 
 	component->createText("fpsText", 10, 10, fpsColor,"9999 fps", 16);
 
-	component->createSprite("sprite12", 300, 300, "assets/textures/sprite-test.png", 0, 1);
+	component->createSprite("spriteTest", 300, 300, "resources/textures/sprite-test.png", 0, 1);
 
 	// Main loop
 	while (window->isOpen())

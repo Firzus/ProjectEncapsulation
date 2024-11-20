@@ -24,7 +24,7 @@ public:
 	void setColor(const ColorRGBA& newColor);
 
 	// Physics
-	virtual void onCollide(Entity* other) override;
+	virtual void bounceOfEntity(Entity* other) override;
 	virtual bool isColliding(Entity* other) override;
 
 	// Getters

@@ -36,4 +36,7 @@ public:
 
 	// Getters
 	Circle* getCircle(const std::string& label);
+	virtual std::unordered_map<std::string, Circle*> getCirclesList() { return circles; }
+	virtual int getWindowWidth();
+	virtual int getWindowHeight();
 };

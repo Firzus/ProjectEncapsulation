@@ -45,3 +45,13 @@ Circle* Window::getCircle(const std::string& label)
 
     return nullptr;
 }
+
+int Window::getWindowWidth()
+{
+    return windowWidth;
+}
+
+int Window::getWindowHeight()
+{
+    return windowHeight;
+}

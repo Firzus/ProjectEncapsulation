@@ -25,7 +25,7 @@ void Window::close()
 void Window::createText(std::string label, int x, int y, const ColorRGBA& color, std::string content, int fontSize)
 {
 	if (texts.find(label) != texts.end()) {
-		std::cerr << "Un texte avec l'identifiant '" << label << "' existe déjà.\n";
+		std::cerr << "Un texte avec l'identifiant '" << label << "' existe dï¿½jï¿½.\n";
 		return;
 	}
 }
@@ -42,7 +42,7 @@ void Window::removeText(const std::string& label)
 void Window::createCircle(std::string label, int x, int y, const ColorRGBA& color, float radius)
 {
     if (circles.find(label) != circles.end()) {
-        std::cerr << "Un cercle avec l'identifiant '" << label << "' existe déjà.\n";
+        std::cerr << "Un cercle avec l'identifiant '" << label << "' existe dï¿½jï¿½.\n";
         return;
     }
 }

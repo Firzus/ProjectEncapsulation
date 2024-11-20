@@ -6,8 +6,9 @@
 class CircleRaylib : public Circle
 {
 public:
-	CircleRaylib(std::string label, int x, int y, const ColorRGBA& color, float radius) : Circle(label, x, y, color, radius) {}
+	CircleRaylib(std::string label, int x, int y, const ColorRGBA& color, float radius, void* renderer)
+		: Circle(label, x, y, color, radius, renderer) {
+	}
 
 	void draw() const override;
 };
-

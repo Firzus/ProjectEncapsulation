@@ -6,13 +6,9 @@ void Window::createWindow(int width, int height, const std::string& title)
 	windowHeight = height;
 }
 
-void Window::draw()
+void Window::draw(std::unordered_map<std::string, Entity*> entities)
 {
-    for (std::pair<const std::string, Circle*>& pair : circles) {
-        pair.second->draw();
-    }
-
-	for (std::pair<const std::string, Text*>& pair : texts) {
+	for (std::pair<const std::string, Entity*>& pair : entities) {
 		pair.second->draw();
 	}
 }
@@ -20,58 +16,4 @@ void Window::draw()
 void Window::close()
 {
     delete this;
-}
-
-void Window::createText(std::string label, int x, int y, const ColorRGBA& color, std::string content, int fontSize)
-{
-	if (texts.find(label) != texts.end()) {
-		std::cerr << "Un texte avec l'identifiant '" << label << "' existe d�j�.\n";
-		return;
-	}
-}
-
-void Window::removeText(const std::string& label)
-{
-	std::unordered_map<std::string, Text*>::iterator it = texts.find(label);
-	if (it != texts.end()) {
-		delete it->second;
-		texts.erase(it);
-	}
-}
-
-void Window::createCircle(std::string label, int x, int y, const ColorRGBA& color, float radius)
-{
-    if (circles.find(label) != circles.end()) {
-        std::cerr << "Un cercle avec l'identifiant '" << label << "' existe d�j�.\n";
-        return;
-    }
-}
-
-void Window::removeCircle(const std::string& label)
-{
-	std::unordered_map<std::string, Circle*>::iterator it = circles.find(label);
-	if (it != circles.end()) {
-        delete it->second;
-		circles.erase(it);
-	}
-}
-
-Circle* Window::getCircle(const std::string& label)
-{
-    std::unordered_map<std::string, Circle*>::iterator it = circles.find(label);
-    if (it != circles.end()) {
-        return it->second;
-    }
-
-    return nullptr;
-}
-
-Text* Window::getText(const std::string& label)
-{
-    std::unordered_map<std::string, Text*>::iterator it = texts.find(label);
-    if (it != texts.end()) {
-        return it->second;
-    }
-
-    return nullptr;
 }

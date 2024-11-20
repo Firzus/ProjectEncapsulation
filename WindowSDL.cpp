@@ -103,22 +103,22 @@ void WindowSDL::endDrawing()
     SDL_RenderPresent(renderer);
 }
 
-void WindowSDL::createCircle(std::string label, int x, int y, const ColorRGBA& color, float radius)
-{
-    Window::createCircle(label, x, y, color, radius);
-
-    circles[label] = new CircleSDL(label, x, y, color, radius, renderer);
-}
-
-void WindowSDL::removeCircle(const std::string& label)
-{
-    Window::removeCircle(label);
-}
-
-void WindowSDL::createSprite(int x, int y, const std::string& filePath)
-{
-
-}
+//void WindowSDL::createCircle(std::string label, int x, int y, const ColorRGBA& color, float radius)
+//{
+//    Window::createCircle(label, x, y, color, radius);
+//
+//    circles[label] = new CircleSDL(label, x, y, color, radius, renderer);
+//}
+//
+//void WindowSDL::removeCircle(const std::string& label)
+//{
+//    Window::removeCircle(label);
+//}
+//
+//void WindowSDL::createSprite(int x, int y, const std::string& filePath)
+//{
+//
+//}
 
 void WindowSDL::close()
 {
@@ -143,19 +143,19 @@ void WindowSDL::close()
     open = false;
 }
 
-void WindowSDL::createText(std::string label, int x, int y, const ColorRGBA& color, std::string content, int fontSize)
-{
+//void WindowSDL::createText(std::string label, int x, int y, const ColorRGBA& color, std::string content, int fontSize)
+//{
+//
+//}
+//
+//void WindowSDL::removeText(const std::string& label)
+//{
+//
+//}
 
-}
-
-void WindowSDL::removeText(const std::string& label)
-{
-
-}
-
-void WindowSDL::loadFont(const std::string& fontPath)
-{
-}
+//void WindowSDL::loadFont(const std::string& fontPath)
+//{
+//}
 
 void WindowSDL::setFrameRate(int frameRate)
 {

@@ -147,6 +147,9 @@
     <ClCompile Include="CircleRaylib.cpp" />
     <ClCompile Include="CircleSDL.cpp" />
     <ClCompile Include="ColorRGBA.cpp" />
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="ComponentRaylib.cpp" />
+    <ClCompile Include="ComponentSDL.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -164,6 +167,9 @@
     <ClInclude Include="CircleRaylib.h" />
     <ClInclude Include="CircleSDL.h" />
     <ClInclude Include="ColorRGBA.h" />
+    <ClInclude Include="Component.h" />
+    <ClInclude Include="ComponentRaylib.h" />
+    <ClInclude Include="ComponentSDL.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteRaylib.h" />

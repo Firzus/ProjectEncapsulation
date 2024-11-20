@@ -3,12 +3,16 @@
 #include "WindowSDL.h"
 #include "WindowRaylib.h"
 
+#include "ComponentRaylib.h"
+#include "ComponentSDL.h"
+
 int main()
 {
 	bool isSetUp = false;
 	int choice;
 
 	Window* window = nullptr;
+	Component* component = nullptr;
 
 	std::cout << "Projet Encapsulation - BOROS Theo / PRIEU Lilian\n\n";
 
@@ -30,6 +34,7 @@ int main()
 			std::cout << "RayLib Selected\n\n";
 
 			window = new WindowRaylib();
+			component = new ComponentRaylib();
 		}
 		else if (choice == 2)
 		{
@@ -38,6 +43,7 @@ int main()
 			std::cout << "SDL Selected\n\n";
 
 			window = new WindowSDL();
+			component = new ComponentSDL();
 		}
 		else
 		{
@@ -48,8 +54,9 @@ int main()
 	// Program
 	window->init();
 	window->createWindow(800, 600, "Window");
-	window->loadFont("assets/font/Roboto.ttf");
-	window->setFrameRate(10000);
+	window->setFrameRate(60);
+
+	component->loadFont("assets/font/Roboto.ttf");
 
 	// Props
 	ColorRGBA bgColor(255, 255, 255, 255);
@@ -57,28 +64,30 @@ int main()
 	ColorRGBA shapeColor1(255, 0, 0, 255);
 	ColorRGBA shapeColor2(0, 255, 0, 255);
 
-	window->createCircle("circle1", 100, 100, shapeColor1, 50);
-	window->createCircle("circle2", 300, 100, shapeColor2, 50);
+	component->createCircle("circle1", 100, 100, shapeColor1, 50);
+	component->createCircle("circle2", 300, 100, shapeColor2, 50);
 
-	window->createText("fpsText", 10, 10, fpsColor,"9999 fps", 16);
+	component->createText("fpsText", 10, 10, fpsColor,"9999 fps", 16);
 
+	// Main loop
 	while (window->isOpen())
 	{
 		// Physics
-		if (window->getCircle("circle1")->isColliding(window->getCircle("circle2")))
+		if (component->getEntity<Circle>("circle1")->isColliding(component->getEntity<Circle>("circle2")))
 		{
-			window->removeCircle("circle2");
+			component->deleteEntity("circle2");
 		}
 
-		if (window->getCircle("circle1") != nullptr)
+		if (component->getEntity<Circle>("circle1") != nullptr)
 		{
-			window->getCircle("circle1")->move(1, 0);
+			component->getEntity<Circle>("circle1")->move(1, 0);
 		}
+
+		component->getEntity<Text>("fpsText")->setContent(std::to_string(window->getFrameRate()) + " fps");
 
 		window->clear(bgColor);
 		window->beginDrawing();
-		window->getText("fpsText")->setContent(std::to_string(window->getFrameRate()) + " fps");
-		window->draw();
+		window->draw(component->getEntites());
 		window->endDrawing();
 	}
 

@@ -109,6 +109,14 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -125,14 +133,20 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CircleRaylib.cpp" />
     <ClCompile Include="ColorRGBA.cpp" />
     <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="FontManager.cpp" />
-    <ClCompile Include="FontRaylib.cpp" />
     <ClCompile Include="FPSCounter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -150,8 +164,6 @@
     <ClInclude Include="CircleRaylib.h" />
     <ClInclude Include="ColorRGBA.h" />
     <ClInclude Include="Entity.h" />
-    <ClInclude Include="FontManager.h" />
-    <ClInclude Include="FontRaylib.h" />
     <ClInclude Include="FPSCounter.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteRaylib.h" />

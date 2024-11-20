@@ -24,7 +24,7 @@ public:
     virtual void clear(const ColorRGBA& color) = 0;
     virtual void beginDrawing() = 0;
 	virtual void endDrawing() = 0;
-	virtual void update();
+	virtual void draw();
     virtual bool isOpen() const = 0;
 	virtual void close();
 
@@ -38,6 +38,7 @@ public:
 	virtual void createSprite(int x, int y, const std::string& filePath) = 0;
 
 	// Utils
+	virtual void loadFont(const std::string& fontPath) = 0;
 	virtual void setFrameRate(int frameRate) = 0;
 
 	// Getters

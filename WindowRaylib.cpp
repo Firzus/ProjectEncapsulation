@@ -1,9 +1,6 @@
 #include "WindowRaylib.h"
 
-void WindowRaylib::init()
-{
-	font.loadFont();
-}
+void WindowRaylib::init() {}
 
 void WindowRaylib::createWindow(int width, int height, const std::string& title)
 {
@@ -43,7 +40,7 @@ void WindowRaylib::createText(std::string label, int x, int y, const ColorRGBA& 
 {
 	Window::createText(label, x, y, color, content, fontSize);
 
-	texts[label] = new TextRaylib(label, x, y, color, content, fontSize);
+	texts[label] = new TextRaylib(customFont, label, x, y, color, content, fontSize);
 }
 
 void WindowRaylib::removeText(const std::string& label)
@@ -66,6 +63,11 @@ void WindowRaylib::removeCircle(const std::string& label)
 void WindowRaylib::createSprite(int x, int y, const std::string& filePath)
 {
 
+}
+
+void WindowRaylib::loadFont(const std::string& fontPath)
+{
+	customFont = LoadFont(fontPath.c_str());
 }
 
 void WindowRaylib::setFrameRate(int frameRate)

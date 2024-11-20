@@ -91,6 +91,10 @@ void WindowSDL::removeText(const std::string& label)
 
 }
 
+void WindowSDL::loadFont(const std::string& fontPath)
+{
+}
+
 void WindowSDL::setFrameRate(int frameRate)
 {
 }

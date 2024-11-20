@@ -5,10 +5,10 @@
 #include "Window.h"
 #include "CircleRaylib.h"
 #include "TextRaylib.h"
-#include "FontRaylib.h"
 
 class WindowRaylib : public Window {
-FontRaylib font;
+private:
+	Font customFont;
 
 public:
 	void init() override;
@@ -29,5 +29,6 @@ public:
 	void createSprite(int x, int y, const std::string& filePath) override;
 	
 	// Utils
+	void loadFont(const std::string& fontPath) override;
     void setFrameRate(int frameRate) override;
 };

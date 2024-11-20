@@ -3,11 +3,14 @@
 #include "WindowSDL.h"
 #include "WindowRaylib.h"
 
+#include "FPSCounter.h"
+
 int main()
 {
 	bool isSetUp = false;
 	int choice;
 
+	FPSCounter fpsCounter;
 	Window* window = nullptr;
 
 	std::cout << "Projet Encapsulation - BOROS Theo / PRIEU Lilian\n\n";
@@ -48,6 +51,7 @@ int main()
 	// Program
 	window->init();
 	window->createWindow(800, 600, "Window");
+	window->loadFont("assets/font/Roboto.ttf");
 	window->setFrameRate(60);
 
 	// Props
@@ -75,10 +79,9 @@ int main()
 			window->getCircle("circle1")->move(1, 0);
 		}
 
-		// Draw
 		window->clear(bgColor);
 		window->beginDrawing();
-		window->update();
+		window->draw();
 		window->endDrawing();
 	}
 

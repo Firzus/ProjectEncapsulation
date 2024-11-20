@@ -6,7 +6,7 @@ void Window::createWindow(int width, int height, const std::string& title)
 	windowHeight = height;
 }
 
-void Window::update()
+void Window::draw()
 {
     for (std::pair<const std::string, Circle*>& pair : circles) {
         pair.second->draw();

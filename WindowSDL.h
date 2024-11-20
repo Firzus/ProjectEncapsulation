@@ -33,5 +33,6 @@ public:
 	void createSprite(int x, int y, const std::string& filePath) override;
 	
 	// Utils
+	void loadFont(const std::string& fontPath) override;
 	void setFrameRate(int frameRate) override;
 };

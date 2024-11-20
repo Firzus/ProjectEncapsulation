@@ -21,9 +21,6 @@
     <ClCompile Include="window.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="FPSCounter.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="Sprite.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
@@ -60,21 +57,12 @@
     <ClCompile Include="TextSDL.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="FontManager.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="FontSDL.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="FontRaylib.cpp">
+    <ClCompile Include="CircleSDL.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="window.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="FPSCounter.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Sprite.h">
@@ -113,19 +101,8 @@
     <ClInclude Include="TextSDL.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="FontManager.h">
+    <ClInclude Include="CircleSDL.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="FontSDL.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="FontRaylib.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="resources\font\Roboto.ttf">
-      <Filter>Fichiers de ressources</Filter>
-    </Font>
   </ItemGroup>
 </Project>

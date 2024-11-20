@@ -74,3 +74,8 @@ void WindowRaylib::setFrameRate(int frameRate)
 {
 	SetTargetFPS(frameRate);
 }
+
+int WindowRaylib::getFrameRate() const
+{
+	return GetFPS();;
+}

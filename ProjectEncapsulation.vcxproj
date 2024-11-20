@@ -148,7 +148,6 @@
     <ClCompile Include="CircleSDL.cpp" />
     <ClCompile Include="ColorRGBA.cpp" />
     <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="FPSCounter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteRaylib.cpp" />
@@ -166,7 +165,6 @@
     <ClInclude Include="CircleSDL.h" />
     <ClInclude Include="ColorRGBA.h" />
     <ClInclude Include="Entity.h" />
-    <ClInclude Include="FPSCounter.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteRaylib.h" />
     <ClInclude Include="SpriteSDL.h" />

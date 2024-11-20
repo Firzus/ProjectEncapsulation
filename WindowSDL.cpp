@@ -161,3 +161,8 @@ void WindowSDL::setFrameRate(int frameRate)
 {
     wantedFrameRate = frameRate;
 }
+
+int WindowSDL::getFrameRate() const
+{
+    return 0;
+}

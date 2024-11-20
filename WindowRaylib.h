@@ -31,4 +31,5 @@ public:
 	// Utils
 	void loadFont(const std::string& fontPath) override;
     void setFrameRate(int frameRate) override;
+	int getFrameRate() const override;
 };

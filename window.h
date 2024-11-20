@@ -40,6 +40,7 @@ public:
 	// Utils
 	virtual void loadFont(const std::string& fontPath) = 0;
 	virtual void setFrameRate(int frameRate) = 0;
+	virtual int getFrameRate() const = 0;
 
 	// Getters
 	Circle* getCircle(const std::string& label);

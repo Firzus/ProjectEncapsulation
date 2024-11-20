@@ -3,14 +3,11 @@
 #include "WindowSDL.h"
 #include "WindowRaylib.h"
 
-#include "FPSCounter.h"
-
 int main()
 {
 	bool isSetUp = false;
 	int choice;
 
-	FPSCounter fpsCounter;
 	Window* window = nullptr;
 
 	std::cout << "Projet Encapsulation - BOROS Theo / PRIEU Lilian\n\n";
@@ -21,8 +18,8 @@ int main()
 		//std::cin >> choice;
 
 		// For testing purposes
-		//choice = 1;
-		choice = 2;
+		choice = 1;
+		//choice = 2;
 
 		system("cls");
 
@@ -52,7 +49,7 @@ int main()
 	window->init();
 	window->createWindow(800, 600, "Window");
 	window->loadFont("assets/font/Roboto.ttf");
-	window->setFrameRate(60);
+	window->setFrameRate(10000);
 
 	// Props
 	ColorRGBA bgColor(255, 255, 255, 255);
@@ -63,8 +60,7 @@ int main()
 	window->createCircle("circle1", 100, 100, shapeColor1, 50);
 	window->createCircle("circle2", 300, 100, shapeColor2, 50);
 
-	int fps = 60;
-	window->createText("fpsText", 10, 10, fpsColor, std::to_string(fps) + " fps", 16);
+	window->createText("fpsText", 10, 10, fpsColor,"9999 fps", 16);
 
 	while (window->isOpen())
 	{
@@ -81,6 +77,7 @@ int main()
 
 		window->clear(bgColor);
 		window->beginDrawing();
+		window->getText("fpsText")->setContent(std::to_string(window->getFrameRate()) + " fps");
 		window->draw();
 		window->endDrawing();
 	}

@@ -54,40 +54,53 @@ int main()
 	ColorRGBA bgColor(255, 255, 255, 255);
 	ColorRGBA shapeColor1(255, 0, 0, 255);
 	ColorRGBA shapeColor2(0, 255, 0, 255);
+	ColorRGBA shapeColor3(0, 180, 180, 255);
 
-	window->createCircle("circle1", 100, 100, shapeColor1, 50);
-	window->createCircle("circle2", 300, 100, shapeColor2, 50);
+
+	window->createCircle("circle1", 100, 100, shapeColor1, 25);
+	window->createCircle("circle2", 300, 100, shapeColor2, 25);
+	window->createCircle("circle3", 500, 500, shapeColor3, 25);
 
 	window->getCircle("circle1")->setDirection(8, 2);
+	window->getCircle("circle2")->setDirection(4, -6);
+	window->getCircle("circle3")->setDirection(2, 3);
 
 	while (window->isOpen())
 	{	
 		// Physics
-		if (window->getCircle("circle1")->isColliding(window->getCircle("circle2")))
+		for (auto it = window->getCirclesList().begin(); it != window->getCirclesList().end(); ++it) 
 		{
-			window->getCircle("circle1")->bounceOfEntity(window->getCircle("circle2"));
-			//window->removeCircle("circle2");
+			// For each circle in the list, check if it collided with another circle of the same list
+			for (auto other = window->getCirclesList().begin(); other != window->getCirclesList().end(); ++other)
+			{
+				if (it->second->isColliding(other->second))
+				{
+					it->second->bounceOfEntity(other->second);
+				}
+			}
+
+			// Left and right screen collisions
+			if (it->second->getPosX() - it->second->getRadius() <= 0 ||
+				it->second->getPosX() + it->second->getRadius() >= window->getWindowWidth())
+			{
+				it->second->setDirection(-it->second->getDirX(), it->second->getDirY());
+			}
+
+			// Up and down screen collisions
+			if (it->second->getPosY() - it->second->getRadius() <= 0 ||
+				it->second->getPosY() + it->second->getRadius() >= window->getWindowHeight())
+			{
+				it->second->setDirection(it->second->getDirX(), -it->second->getDirY());
+			}
 		}
 
 		// Inputs handling (Raylib)
-		if (window->getCircle("circle1") != nullptr)
+		for (auto it = window->getCirclesList().begin(); it != window->getCirclesList().end(); ++it)
 		{
-			window->getCircle("circle1")->move();
-		}
-
-		// GameManager Update
-		// Left and right screen collisions
-		if (window->getCircle("circle1")->getPosX() - window->getCircle("circle1")->getRadius() <= 0 ||
-			window->getCircle("circle1")->getPosX() + window->getCircle("circle1")->getRadius() >= window->getWindowWidth())
-		{
-			window->getCircle("circle1")->setDirection(-window->getCircle("circle1")->getDirX(), window->getCircle("circle1")->getDirY());
-		}
-
-		// Up and down screen collisions
-		if (window->getCircle("circle1")->getPosY() - window->getCircle("circle1")->getRadius() <= 0 ||
-			window->getCircle("circle1")->getPosY() + window->getCircle("circle1")->getRadius() >= window->getWindowHeight())
-		{
-			window->getCircle("circle1")->setDirection(window->getCircle("circle1")->getDirX(), -window->getCircle("circle1")->getDirY());
+			if (it->second != nullptr)
+			{
+				it->second->move();
+			}
 		}
 
 		// Draw

@@ -165,6 +165,9 @@
     <ClCompile Include="src\Entity.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Quadrilateral.cpp" />
+    <ClCompile Include="src\QuadrilateralRaylib.cpp" />
+    <ClCompile Include="src\QuadrilateralSDL.cpp" />
     <ClCompile Include="src\Sprite.cpp" />
     <ClCompile Include="src\SpriteRaylib.cpp" />
     <ClCompile Include="src\SpriteSDL.cpp" />
@@ -187,6 +190,9 @@
     <ClInclude Include="include\ComponentSDL.h" />
     <ClInclude Include="include\Entity.h" />
     <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\Quadrilateral.h" />
+    <ClInclude Include="include\QuadrilateralRaylib.h" />
+    <ClInclude Include="include\QuadrilateralSDL.h" />
     <ClInclude Include="include\Sprite.h" />
     <ClInclude Include="include\SpriteRaylib.h" />
     <ClInclude Include="include\SpriteSDL.h" />

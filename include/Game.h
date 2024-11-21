@@ -4,6 +4,7 @@
 #include <Window.h>
 #include <Component.h>
 #include "Circle.h"
+#include "Quadrilateral.h"
 #include "Sprite.h"
 #include "Text.h"
 

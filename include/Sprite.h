@@ -1,6 +1,5 @@
 #pragma once
 
-#include <string>
 #include "Entity.h"
 
 class Sprite : public Entity {

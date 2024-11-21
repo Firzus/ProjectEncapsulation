@@ -21,14 +21,14 @@ public:
 	virtual void endDrawing() = 0;
 	virtual void draw(std::unordered_map<std::string, Entity*> entities);
     virtual bool isOpen() const = 0;
-	virtual void close();
+	virtual void close() = 0;
 
 	// Utils
 	virtual void setFrameRate(int frameRate) = 0;
 	virtual int getFrameRate() const = 0;
 
 	// Getters
-	int getWindowWidth() { return windowWidth; }
-	int getWindowHeight() { return windowHeight; }
+	int getWindowWidth() const { return windowWidth; }
+	int getWindowHeight() const { return windowHeight; }
 
 };

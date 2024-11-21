@@ -10,6 +10,11 @@ void ComponentSDL::createCircle(std::string label, int x, int y, const ColorRGBA
     Component::createEntity(label, entities[label] = new CircleSDL(label, x, y, color, radius, renderer));
 }
 
+void ComponentSDL::createQuadrilateral(std::string label, int x, int y, const ColorRGBA& color, float width, float height, float rotation)
+{
+	Component::createEntity(label, entities[label] = new QuadrilateralSDL(label, x, y, color, width, height, rotation));
+}
+
 void ComponentSDL::createSprite(std::string label, int x, int y, std::string texturePath, float rotation, float scale)
 {
     Component::createEntity(label, entities[label] = new SpriteSDL(label, x, y, texturePath, rotation, scale, renderer));

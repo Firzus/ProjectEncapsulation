@@ -22,8 +22,8 @@ int main()
 		//std::cin >> choice;
 
 		// For testing purposes
-		//choice = 1;
-		choice = 2;
+		choice = 1;
+		//choice = 2;
 
 		system("cls");
 

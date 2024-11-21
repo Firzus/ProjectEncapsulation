@@ -3,12 +3,13 @@
 
 #include "Sprite.h"
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 
 class SpriteSDL : public Sprite
 {
 private:
 	SDL_Renderer* renderer = NULL;
-	SDL_Surface* image = NULL;
+	SDL_Surface* surface = NULL;
 	SDL_Texture* texture = NULL;
 	SDL_Rect dstrect = { 0,0,0,0 };
 	SDL_Point pivot;

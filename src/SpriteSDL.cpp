@@ -4,23 +4,23 @@ SpriteSDL::SpriteSDL(std::string label, int x, int y, std::string texturePath, f
 {
     this->renderer = renderer;
 
-    image = SDL_LoadBMP(texturePath.c_str());
+    surface = IMG_Load(texturePath.c_str());
 
-    if (!image) {
-        std::cerr << "Error loading image: " << SDL_GetError() << std::endl;
+    if (!surface) {
+        std::cerr << "Failed to load image: " << IMG_GetError() << std::endl;
         return;
     }
 
-    texture = SDL_CreateTextureFromSurface(renderer, image);
+    texture = SDL_CreateTextureFromSurface(renderer, surface);
 
     if (!texture) {
         std::cerr << "Error creating texture: " << SDL_GetError() << std::endl;
-        SDL_FreeSurface(image);
+        SDL_FreeSurface(surface);
         return;
     }
 
     int intScale = scale;
-    dstrect = { x, y, (image->w) * intScale, (image->h) * intScale };   // posx, posy, length, height
+    dstrect = { x, y, (surface->w) * intScale, (surface->h) * intScale };   // posx, posy, length, height
 
     // Rotation angle (in degrees)
     this->rotation = rotation;
@@ -28,7 +28,7 @@ SpriteSDL::SpriteSDL(std::string label, int x, int y, std::string texturePath, f
     // Pivot point
     pivot = { dstrect.w / 2, dstrect.h / 2 };
 
-    SDL_FreeSurface(image);
+    SDL_FreeSurface(surface);
 }
 
 SpriteSDL::~SpriteSDL()
@@ -37,9 +37,9 @@ SpriteSDL::~SpriteSDL()
         SDL_DestroyTexture(texture);
         texture = nullptr;
     }
-    if (image) {
-        SDL_FreeSurface(image);
-        image = nullptr;
+    if (surface) {
+        SDL_FreeSurface(surface);
+        surface = nullptr;
     }
 }
 

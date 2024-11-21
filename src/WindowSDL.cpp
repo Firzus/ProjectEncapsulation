@@ -11,7 +11,11 @@ void WindowSDL::init()
 	}
 
     if (TTF_Init() == -1) {
-        throw std::runtime_error("Erreur d'initialisation de SDL_ttf : " + std::string(SDL_GetError()));
+        throw std::runtime_error("Erreur d'initialisation de SDL_ttf : " + std::string(TTF_GetError()));
+    }
+
+    if (IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG) == 0) {
+        throw std::runtime_error("Failed to initialize SDL_image: " + std::string(IMG_GetError()));
     }
 }
 

@@ -17,6 +17,23 @@ void Circle::bounceOfEntity(Entity* other)
 
 		// Normalize dx and dy vectors
 		float distance = std::sqrt(distanceSquared);
+
+		// Correct position to avoid bad collisions
+		if (distance < radius + otherCircle->getRadius()) 
+		{
+			float overlap = (radius + otherCircle->getRadius()) - distance;
+
+			float adjustX = overlap * dx / distance / 2.0f;
+			float adjustY = overlap * dy / distance / 2.0f;
+
+			posX += adjustX;
+			posY += adjustY;
+
+			otherCircle->setPosition(
+				otherCircle->getPosX() - adjustX,
+				otherCircle->getPosY() - adjustY);
+		}
+
 		float normalX = dx / distance;
 		float normalY = dy / distance;
 

@@ -6,53 +6,63 @@ void Bubble::init()
 	shapeColor2 = { 0, 255, 0, 255 };
 	shapeColor3 = { 0, 0, 255, 255 };
 
-	createBubble("circle1", 100, 100, shapeColor1, 25, 8, 2);
-	createBubble("circle2", 300, 100, shapeColor2, 25, -3, 5);
+	createBubble("circle1", 100, 100, shapeColor1, 25, 6, 1);
+	createBubble("circle2", 300, 100, shapeColor2, 25, -2, 4);
 	createBubble("circle3", 500, 500, shapeColor3, 25, 2, 3);
+	createBubble("circle4", 600, 300, shapeColor3, 40, 1, 2);
 }
 
 void Bubble::update()
 {
 	// Physics and collisions
-	for (auto it = component->getEntities().begin(); it != component->getEntities().end(); ++it)
+	for (auto it = circles.begin(); it != circles.end();)
 	{
-		// For each component in the list, check if it collided with another component of the same list
-		for (auto other = component->getEntities().begin(); other != component->getEntities().end(); ++other)
+		Circle* circle = *it;
+
+		for (auto other = circles.begin(); other != circles.end();)
 		{
-			if (it->second->isColliding(other->second))
+			Circle* otherCircle = *other;
+
+			if (circle->isColliding(otherCircle))
 			{
-				it->second->bounceOfEntity(other->second);
+				circle->bounceOfEntity(otherCircle);
 			}
+			other++;
 		}
 
-		// Verify the actual component is a circle
-		if (dynamic_cast<Circle*>(it->second))
+		// Left and right screen collisions
+		if (circle->getPosX() - circle->getRadius() <= 0)
 		{
-			Circle* circle = dynamic_cast<Circle*>(it->second);
+			circle->setPosition(circle->getRadius(), circle->getPosY());
+			circle->setDirection(-circle->getDirX(), circle->getDirY());
+		}
+		if(circle->getPosX() + circle->getRadius() >= window->getWindowWidth())
+		{
+			circle->setPosition(window->getWindowWidth() - circle->getRadius(), circle->getPosY());
+			circle->setDirection(-circle->getDirX(), circle->getDirY());
+		}
 
-			// Left and right screen collisions
-			if (circle->getPosX() - circle->getRadius() <= 0 ||
-				circle->getPosX() + circle->getRadius() >= window->getWindowWidth())
-			{
-				it->second->setDirection(-it->second->getDirX(), it->second->getDirY());
-			}
+		// Up and down screen collisions
+		if (circle->getPosY() - circle->getRadius() <= 0)
+		{
+			circle->setPosition(circle->getPosX(), circle->getRadius());
+			circle->setDirection(circle->getDirX(), -circle->getDirY());
+		}
+		if (circle->getPosY() + circle->getRadius() >= window->getWindowHeight())
+		{
+			circle->setPosition(circle->getPosX(), window->getWindowHeight() - circle->getRadius());
+			circle->setDirection(circle->getDirX(), -circle->getDirY());
+		}
 
-			// Up and down screen collisions
-			if (circle->getPosY() - circle->getRadius() <= 0 ||
-				circle->getPosY() + circle->getRadius() >= window->getWindowHeight())
+		// Call the move function for every circle in the list
+		for (Circle* circle : circles)
+		{
+			if (circle != nullptr)
 			{
-				circle->setDirection(circle->getDirX(), -circle->getDirY());
+				circle->move();
 			}
 		}
-	}
-
-	// Call the move function for every components in the list
-	for (auto it = component->getEntities().begin(); it != component->getEntities().end(); ++it)
-	{
-		if (it->second != nullptr)
-		{
-			it->second->move();
-		}
+		it++;
 	}
 }
 

@@ -3,12 +3,16 @@
 #include "WindowSDL.h"
 #include "WindowRaylib.h"
 
+#include "ComponentRaylib.h"
+#include "ComponentSDL.h"
+
 int main()
 {
 	bool isSetUp = false;
 	int choice;
 
 	Window* window = nullptr;
+	Component* component = nullptr;
 
 	std::cout << "Projet Encapsulation - BOROS Theo / PRIEU Lilian\n\n";
 
@@ -30,6 +34,7 @@ int main()
 			std::cout << "RayLib Selected\n\n";
 
 			window = new WindowRaylib();
+			component = new ComponentRaylib();
 		}
 		else if (choice == 2)
 		{
@@ -38,6 +43,7 @@ int main()
 			std::cout << "SDL Selected\n\n";
 
 			window = new WindowSDL();
+			component = new ComponentSDL();
 		}
 		else
 		{
@@ -48,8 +54,9 @@ int main()
 	// Program
 	window->init();
 	window->createWindow(800, 600, "Window");
-	window->loadFont("assets/font/Roboto.ttf");
 	window->setFrameRate(60);
+
+	component->loadFont("resources/fonts/Roboto.ttf");
 
 	// Props
 	ColorRGBA bgColor(255, 255, 255, 255);
@@ -59,7 +66,7 @@ int main()
 	ColorRGBA shapeColor3(0, 180, 180, 255);
 
 
-	window->createText("fpsText", 10, 10, fpsColor,"9999 fps", 16);
+	component->createSprite("spriteTest", 300, 300, "resources/textures/sprite-test.png", 0, 1);
 
 	window->createCircle("circle1", 100, 100, shapeColor1, 25);
 	window->createCircle("circle2", 300, 100, shapeColor2, 25);
@@ -69,10 +76,16 @@ int main()
 	window->getCircle("circle2")->setDirection(4, -6);
 	window->getCircle("circle3")->setDirection(2, 3);
 
+	// Main loop
 	while (window->isOpen())
 	{
 		// Physics
-		for (auto it = window->getCirclesList().begin(); it != window->getCirclesList().end(); ++it) 
+		if (component->getEntity<Circle>("circle1")->isColliding(component->getEntity<Circle>("circle2")))
+		{
+			component->deleteEntity("circle2");
+		}
+
+		for (auto it = window->getCirclesList().begin(); it != window->getCirclesList().end(); ++it)
 		{
 			// For each circle in the list, check if it collided with another circle of the same list
 			for (auto other = window->getCirclesList().begin(); other != window->getCirclesList().end(); ++other)
@@ -97,6 +110,10 @@ int main()
 				it->second->setDirection(it->second->getDirX(), -it->second->getDirY());
 			}
 		}
+		if (component->getEntity<Circle>("circle1") != nullptr)
+		{
+			component->getEntity<Circle>("circle1")->move(1, 0);
+		}
 
 		// Inputs handling (Raylib)
 		for (auto it = window->getCirclesList().begin(); it != window->getCirclesList().end(); ++it)
@@ -107,10 +124,11 @@ int main()
 			}
 		}
 
+		component->getEntity<Text>("fpsText")->setContent(std::to_string(window->getFrameRate()) + " fps");
+
 		window->clear(bgColor);
 		window->beginDrawing();
-		window->getText("fpsText")->setContent(std::to_string(window->getFrameRate()) + " fps");
-		window->draw();
+		window->draw(component->getEntites());
 		window->endDrawing();
 	}
 

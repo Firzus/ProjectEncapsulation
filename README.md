@@ -39,11 +39,10 @@ cd vcpkg
 
 ### 2. Installer SDL2 et Raylib avec vcpkg
 
-Une fois `vcpkg` installé et configuré, vous pouvez installer SDL2 et Raylib en exécutant les commandes suivantes dans votre terminal :
+Une fois `vcpkg` installé et configuré, vous pouvez installer SDL2, Raylib et ses dépendances en exécutant les commandes suivantes dans votre terminal :
 
 ```bash
-vcpkg install sdl2
-vcpkg install raylib
+vcpkg install sdl2 sdl2-image sdl2-ttf raylib
 ````
 
 Cela installera les bibliothèques nécessaires globalement via **vcpkg**.

@@ -9,6 +9,9 @@ private:
 	ColorRGBA shapeColor1 = { 0, 0, 0, 0 };
 	ColorRGBA shapeColor2 = { 0, 0, 0, 0 };
 	ColorRGBA shapeColor3 = { 0, 0, 0, 0 };
+	ColorRGBA shapeColor4 = { 0, 0, 0, 0 };
+	ColorRGBA shapeColor5 = { 0, 0, 0, 0 };
+	ColorRGBA shapeColor6 = { 0, 0, 0, 0 };
 
 public:
 	Bubble(Window* window, Component* component) : Game(window, component) {}

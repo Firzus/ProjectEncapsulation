@@ -5,11 +5,16 @@ void Bubble::init()
 	shapeColor1 = { 255, 0, 0, 255 };
 	shapeColor2 = { 0, 255, 0, 255 };
 	shapeColor3 = { 0, 0, 255, 255 };
+	shapeColor4 = { 234, 239, 44, 255 };
+	shapeColor5 = { 165, 55, 253, 255 };
+	shapeColor6 = { 227, 61, 148, 255 };
 
-	createBubble("circle1", 100, 100, shapeColor1, 25, 6, 1);
-	createBubble("circle2", 300, 100, shapeColor2, 25, -2, 4);
-	createBubble("circle3", 500, 500, shapeColor3, 25, 2, 3);
-	createBubble("circle4", 600, 300, shapeColor3, 40, 1, 2);
+	createBubble("circle1", 100, 100, shapeColor1, 45, -2, 1);
+	createBubble("circle2", 300, 100, shapeColor2, 35, -1, 2);
+	createBubble("circle3", 500, 500, shapeColor3, 70, 1, 2);
+	createBubble("circle5", 300, 600, shapeColor4, 25, 3, 2);
+	createBubble("circle4", 600, 300, shapeColor5, 50, 1, 2);
+	createBubble("circle6", 600, 600, shapeColor6, 20, 1, 2);
 }
 
 void Bubble::update()

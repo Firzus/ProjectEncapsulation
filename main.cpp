@@ -18,8 +18,8 @@ int main()
 		//std::cin >> choice;
 
 		// For testing purposes
-		choice = 1;
-		//choice = 2;
+		//choice = 1;
+		choice = 2;
 
 		system("cls");
 
@@ -49,7 +49,7 @@ int main()
 	window->init();
 	window->createWindow(800, 600, "Window");
 	window->loadFont("assets/font/Roboto.ttf");
-	window->setFrameRate(10000);
+	window->setFrameRate(60);
 
 	// Props
 	ColorRGBA bgColor(255, 255, 255, 255);

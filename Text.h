@@ -21,6 +21,7 @@ public:
     virtual ~Text() = default;
 
 	// Physics
+	virtual void bounceOfEntity(Entity* other) override;
 	virtual bool isColliding(Entity* other) override;
 
 	// Getters - Setters

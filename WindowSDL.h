@@ -3,7 +3,7 @@
 
 #include "Window.h"
 #include "CircleSDL.h"
-#include <iostream>
+#include "TextSDL.h"
 #include <stdexcept>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_timer.h>
@@ -17,6 +17,8 @@ SDL_Texture* texture = NULL;
 SDL_Rect dstrect;
 Uint64 start;
 Uint64 end;
+TTF_Font* customFont;
+int currentFrameRate = 0;
 int wantedFrameRate = 0;
 bool isImageLoaded = false;
 bool open = false;

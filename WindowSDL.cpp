@@ -9,6 +9,10 @@ void WindowSDL::init()
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		throw std::runtime_error("SDL n'a pas pu être initialisé : " + std::string(SDL_GetError()));
 	}
+
+    if (TTF_Init() == -1) {
+        throw std::runtime_error("Erreur d'initialisation de SDL_ttf : " + std::string(SDL_GetError()));
+    }
 }
 
 void WindowSDL::createWindow(int width, int height, const std::string& title)
@@ -97,8 +101,17 @@ void WindowSDL::endDrawing()
     end = SDL_GetPerformanceCounter();
     float elapsedMS = (end - start) / (float)SDL_GetPerformanceFrequency() * 1000.0f;
 
-    // Cap to chosen FPS
-    SDL_Delay(floor((1000 / wantedFrameRate) - elapsedMS));
+    //currentFrameRate = 1.0f / (elapsedMS / 1000);
+
+    // Calculer le délai restant pour atteindre le FPS souhaité
+    float delay = 1000.0f / wantedFrameRate;
+
+    // Ne pas appeler SDL_Delay si le délai est négatif ou nul
+    if (elapsedMS < delay) {
+        SDL_Delay(static_cast<Uint32>(floor(delay - elapsedMS)));
+    }
+
+    currentFrameRate = 1000.0f / (elapsedMS + (delay - elapsedMS > 0 ? delay - elapsedMS : 0));
 
     SDL_RenderPresent(renderer);
 }
@@ -145,16 +158,23 @@ void WindowSDL::close()
 
 void WindowSDL::createText(std::string label, int x, int y, const ColorRGBA& color, std::string content, int fontSize)
 {
+    Window::createText(label, x, y, color, content, fontSize);
 
+    texts[label] = new TextSDL(customFont, label, x, y, color, content, fontSize, renderer);
 }
 
 void WindowSDL::removeText(const std::string& label)
 {
-
+    Window::removeText(label);
 }
 
 void WindowSDL::loadFont(const std::string& fontPath)
 {
+    customFont = TTF_OpenFont(fontPath.c_str(), 16);
+    if (!customFont) {
+        std::cerr << "TTF_OpenFont Error: " << TTF_GetError() << std::endl;
+        return;
+    }
 }
 
 void WindowSDL::setFrameRate(int frameRate)
@@ -164,5 +184,5 @@ void WindowSDL::setFrameRate(int frameRate)
 
 int WindowSDL::getFrameRate() const
 {
-    return 0;
+    return currentFrameRate;
 }

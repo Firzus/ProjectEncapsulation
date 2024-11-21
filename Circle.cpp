@@ -1,11 +1,6 @@
 #include "Circle.h"
 #include <iostream>
 
-void Circle::setColor(const ColorRGBA& newColor)
-{
-	color = newColor;
-}
-
 void Circle::bounceOfEntity(Entity* other)
 {
 	// Cercle

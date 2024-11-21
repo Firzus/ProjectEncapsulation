@@ -63,36 +63,6 @@ void WindowSDL::beginDrawing()
 
     // Start FPS counter
     start = SDL_GetPerformanceCounter();
-
-    /*
-    SDL_Rect rect;
-    rect.x = 250;
-    rect.y = 150;
-    rect.w = 200;
-    rect.h = 200;
-
-    SDL_RenderDrawRect(renderer, &rect);
-    SDL_RenderFillRect(renderer, &rect);
-    */
-
-    /*
-    SDL_RenderDrawCircle(renderer, 200, 200, 50);
-    SDL_RenderFillCircle(renderer, 200, 200, 50);
-    */
-
-    /*
-    if (!isImageLoaded)
-    {
-        image = SDL_LoadBMP("x64/Debug/tree.bmp");
-        texture = SDL_CreateTextureFromSurface(renderer, image);
-        dstrect = { 50, 20, 700, 400 };   // posx, posy, length, height
-
-        isImageLoaded = true;
-    }
-    // copy the texture to the rendering context
-    SDL_RenderCopy(renderer, texture, NULL, &dstrect);
-    */
-
 }
 
 void WindowSDL::endDrawing()
@@ -125,14 +95,6 @@ void WindowSDL::close()
     if (window) {
         SDL_DestroyWindow(window);
         window = nullptr;
-    }
-    if (texture) {
-        SDL_DestroyTexture(texture);
-        texture = nullptr;
-    }
-    if (image) {
-        SDL_FreeSurface(image);
-        image = nullptr;
     }
 
     SDL_Quit();

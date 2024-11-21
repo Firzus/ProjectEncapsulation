@@ -34,24 +34,24 @@ void Bubble::update()
 		if (circle->getPosX() - circle->getRadius() <= 0)
 		{
 			circle->setPosition(circle->getRadius(), circle->getPosY());
-			circle->setDirection(-circle->getDirX(), circle->getDirY());
+			circle->setDirX(-circle->getDirX());
 		}
 		if(circle->getPosX() + circle->getRadius() >= window->getWindowWidth())
 		{
 			circle->setPosition(window->getWindowWidth() - circle->getRadius(), circle->getPosY());
-			circle->setDirection(-circle->getDirX(), circle->getDirY());
+			circle->setDirX(-circle->getDirX());
 		}
 
 		// Up and down screen collisions
 		if (circle->getPosY() - circle->getRadius() <= 0)
 		{
 			circle->setPosition(circle->getPosX(), circle->getRadius());
-			circle->setDirection(circle->getDirX(), -circle->getDirY());
+			circle->setDirY(-circle->getDirY());
 		}
 		if (circle->getPosY() + circle->getRadius() >= window->getWindowHeight())
 		{
 			circle->setPosition(circle->getPosX(), window->getWindowHeight() - circle->getRadius());
-			circle->setDirection(circle->getDirX(), -circle->getDirY());
+			circle->setDirY(-circle->getDirY());
 		}
 
 		// Call the move function for every circle in the list
@@ -78,5 +78,8 @@ void Bubble::createBubble(std::string label, int x, int y, const ColorRGBA& colo
 		}
 	}
 
-	component->getEntity<Circle>(label)->setDirection(speedX, speedY);
+	component->getEntity<Circle>(label)->setDirX(speedX);
+	component->getEntity<Circle>(label)->setDirY(speedY);
+
+	component->getEntity<Circle>(label)->move();
 }

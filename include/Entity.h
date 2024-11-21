@@ -18,17 +18,19 @@ public:
 	virtual void draw() const = 0;
 
 	virtual void setPosition(int x, int y);
-	virtual void setDirection(int x, int y);
 	virtual void move();
 
 	// Physics
 	virtual void bounceOfEntity(Entity* other) = 0;
 	virtual bool isColliding(Entity* other) = 0;
 
-	// Getters
+	// Getters and Setters
 	std::string getLabel() const { return label; }
 	int getPosX() const { return posX; }
 	int getPosY() const { return posY; }
+
+	void setDirX(int newDirX) { dirX = newDirX; }
+	void setDirY(int newDirY) { dirY = newDirY; }
 	int getDirX() const { return dirX; }
 	int getDirY() const { return dirY; }
 };

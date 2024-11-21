@@ -84,7 +84,10 @@ void Circle::bounceOfEntity(Entity* other)
 		}
 
 		// Set the new direction
-		setDirection(newDirX, newDirY);
+		dirX = newDirX;
+		dirY = newDirY;
+
+		move();
 	}
 }
 

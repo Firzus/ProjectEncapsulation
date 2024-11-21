@@ -6,12 +6,6 @@ void Entity::setPosition(int x, int y)
 	posY = y;
 }
 
-void Entity::setDirection(int x, int y)
-{
-	dirX = x;
-	dirY = y;
-}
-
 void Entity::move()
 {
 	posX += dirX * speed;

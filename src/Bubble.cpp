@@ -80,6 +80,4 @@ void Bubble::createBubble(std::string label, int x, int y, const ColorRGBA& colo
 
 	component->getEntity<Circle>(label)->setDirX(speedX);
 	component->getEntity<Circle>(label)->setDirY(speedY);
-
-	component->getEntity<Circle>(label)->move();
 }

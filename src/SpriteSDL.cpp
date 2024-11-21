@@ -53,3 +53,7 @@ bool SpriteSDL::isColliding(Entity* other)
 {
 	return false;
 }
+
+void SpriteSDL::bounceOfEntity(Entity* other)
+{
+}

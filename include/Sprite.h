@@ -18,14 +18,14 @@ public:
 
     virtual ~Sprite() = default;
 
-	// Physics
-	virtual void bounceOfEntity(Entity* other) override;
-	virtual bool isColliding(Entity* other) override;
-
+	virtual void bounceOfEntity(Entity* other) override = 0;
+	virtual bool isColliding(Entity* other) override = 0;
 
 	// Getters - Setters
 	float getRotation() const { return rotation; }
 	float getScale() const { return scale; }
+	virtual int getWidth() const = 0;
+	virtual int getHeight() const = 0;
 
 	void setRotation(float newRotation) { rotation = newRotation; }
 	void setScale(float newScale) { scale = newScale; }

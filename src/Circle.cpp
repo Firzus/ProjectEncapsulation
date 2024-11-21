@@ -1,5 +1,7 @@
 #include "Circle.h"
-#include <iostream>
+
+#include "Quadrilateral.h"
+#include "Sprite.h"
 
 void Circle::bounceOfEntity(Entity* other)
 {
@@ -93,7 +95,6 @@ void Circle::bounceOfEntity(Entity* other)
 
 bool Circle::isColliding(Entity* other)
 {
-	// Cercle
 	Circle* otherCircle = dynamic_cast<Circle*>(other);
 	if (otherCircle) {
 		int dx = posX - otherCircle->getPosX();
@@ -103,11 +104,50 @@ bool Circle::isColliding(Entity* other)
 		return distanceSquared <= radiusSum * radiusSum;
 	}
 
+	Quadrilateral* otherRect = dynamic_cast<Quadrilateral*>(other);
+	if (otherRect) {
+		// Récupérer les dimensions et la position du rectangle
+		float rectX = otherRect->getPosX();
+		float rectY = otherRect->getPosY();
+		float rectWidth = otherRect->getWidth();
+		float rectHeight = otherRect->getHeight();
+
+		// Trouver le point le plus proche sur le rectangle par rapport au centre du cercle
+		float closestX = std::max(rectX, std::min((float)posX, rectX + rectWidth));
+		float closestY = std::max(rectY, std::min((float)posY, rectY + rectHeight));
+
+		// Calculer la distance entre le cercle et ce point
+		float dx = posX - closestX;
+		float dy = posY - closestY;
+
+		// Si la distance au carré est inférieure ou égale au rayon au carré, il y a collision
+		return (dx * dx + dy * dy) <= (radius * radius);
+	}
+
+	// Sprite
+	Sprite* otherSprite = dynamic_cast<Sprite*>(other);
+	if (otherSprite) {
+		// Récupérer les dimensions et la position du sprite
+		float spriteX = otherSprite->getPosX();
+		float spriteY = otherSprite->getPosY();
+		float spriteWidth = otherSprite->getWidth();
+		float spriteHeight = otherSprite->getHeight();
+		// Trouver le point le plus proche sur le sprite par rapport au centre du cercle
+		float closestX = std::max(spriteX, std::min((float)posX, spriteX + spriteWidth));
+		float closestY = std::max(spriteY, std::min((float)posY, spriteY + spriteHeight));
+		// Calculer la distance entre le cercle et ce point
+		float dx = posX - closestX;
+		float dy = posY - closestY;
+		// Si la distance au carré est inférieure ou égale au rayon au carré, il y a collision
+		return (dx * dx + dy * dy) <= (radius * radius);
+	}
+
 	// Others
 
 	//
 	//
 	//
 
+	// No collision
 	return false;
 }

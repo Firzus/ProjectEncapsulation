@@ -41,7 +41,30 @@ void BrickBreaker::update()
     for (auto it = bricks.begin(); it != bricks.end();) {
         auto brick = component->getEntity<Sprite>(*it);
         if (brick && ball->isColliding(brick)) {
-            ball->setDirY(-ball->getDirY()); // Rebond vertical
+
+            // Calculates which side was the brick touched
+            float deltaLeft = std::abs((brick->getPosX() - ball->getPosX()) - ball->getRadius());
+            float deltaRight = std::abs((brick->getPosX() + brick->getWidth() - ball->getPosX()) + ball->getRadius());
+            float deltaTop = std::abs((brick->getPosY() - ball->getPosY()) - ball->getRadius());
+            float deltaBottom = std::abs((brick->getPosY() + brick->getHeight() - ball->getPosY()) + ball->getRadius());
+
+            if (deltaLeft < deltaTop && deltaLeft < deltaRight && deltaLeft < deltaBottom) {
+                // Left collision
+                ball->setDirX(-ball->getDirX());
+            }
+            else if (deltaRight < deltaTop && deltaRight < deltaLeft && deltaRight < deltaBottom) {
+                // Right collision
+                ball->setDirX(-ball->getDirX());
+            }
+            else if (deltaTop < deltaLeft && deltaTop < deltaRight && deltaTop < deltaBottom) {
+                // Up collision
+                ball->setDirY(-ball->getDirY());
+            }
+            else {
+                // Down collision
+                ball->setDirY(-ball->getDirY());
+            }
+
             component->deleteEntity(*it);   // Supprimer la brique
             it = bricks.erase(it);          // Retirer la brique du tableau
         }

@@ -26,10 +26,10 @@ int main()
 	while (!isLibSetUp)
 	{
 		std::cout << "Choix de la librairie : RayLib (1) ou SDL (2) ?\n";
-		std::cin >> libChoice;
+		//std::cin >> libChoice;
 
 		// For testing purposes
-		//libChoice = 1;
+		libChoice = 1;
 		//libChoice = 2;
 
 		system("cls");
@@ -61,11 +61,11 @@ int main()
 	while (!isGameSetUp)
 	{
 		std::cout << "Choix du jeu : Bulles (1) ou Casse Brique (2) ?\n";
-		std::cin >> gameChoice;
+		//std::cin >> gameChoice;
 
 		// For testing purposes
 		//gameChoice = 1;
-		//gameChoice = 2;
+		gameChoice = 2;
 
 		system("cls");
 
@@ -116,7 +116,7 @@ int main()
 	game->init();
 
 	// Exemple
-	//component->createSprite("spriteTest", 300, 300, "resources/textures/sprite-test.png", 0, 1);
+	//component->createSprite("spriteTest", 0, 0, "resources/textures/sprite-test.png", 0, 1);
 	//component->createQuadrilateral("quadri", 100, 100, fpsColor, 50, 200, 0);
 
 	// Main loop

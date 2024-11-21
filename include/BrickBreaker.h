@@ -5,8 +5,7 @@
 class BrickBreaker : public Game
 {
 private:
-	Component* player;
-	Component* ball;
+	int numBricks = 40;
 
 public:
 	BrickBreaker(Window* window, Component* component) : Game(window, component) {}

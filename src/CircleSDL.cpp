@@ -2,9 +2,7 @@
 
 void CircleSDL::draw() const
 {
-    SDL_Renderer* sdlRenderer = static_cast<SDL_Renderer*>(renderer);
-
-    SDL_SetRenderDrawColor(sdlRenderer, color.R(), color.G(), color.B(), color.A());
+    SDL_SetRenderDrawColor(renderer, color.R(), color.G(), color.B(), color.A());
 
     int offsetx, offsety, d;
     int status;
@@ -15,22 +13,22 @@ void CircleSDL::draw() const
     status = 0;
 
     while (offsety >= offsetx) {
-        status += SDL_RenderDrawPoint(sdlRenderer, posX + offsetx, posY + offsety);
-        status += SDL_RenderDrawPoint(sdlRenderer, posX + offsety, posY + offsetx);
-        status += SDL_RenderDrawPoint(sdlRenderer, posX - offsetx, posY + offsety);
-        status += SDL_RenderDrawPoint(sdlRenderer, posX - offsety, posY + offsetx);
-        status += SDL_RenderDrawPoint(sdlRenderer, posX + offsetx, posY - offsety);
-        status += SDL_RenderDrawPoint(sdlRenderer, posX + offsety, posY - offsetx);
-        status += SDL_RenderDrawPoint(sdlRenderer, posX - offsetx, posY - offsety);
-        status += SDL_RenderDrawPoint(sdlRenderer, posX - offsety, posY - offsetx);
+        status += SDL_RenderDrawPoint(renderer, posX + offsetx, posY + offsety);
+        status += SDL_RenderDrawPoint(renderer, posX + offsety, posY + offsetx);
+        status += SDL_RenderDrawPoint(renderer, posX - offsetx, posY + offsety);
+        status += SDL_RenderDrawPoint(renderer, posX - offsety, posY + offsetx);
+        status += SDL_RenderDrawPoint(renderer, posX + offsetx, posY - offsety);
+        status += SDL_RenderDrawPoint(renderer, posX + offsety, posY - offsetx);
+        status += SDL_RenderDrawPoint(renderer, posX - offsetx, posY - offsety);
+        status += SDL_RenderDrawPoint(renderer, posX - offsety, posY - offsetx);
 
-        status += SDL_RenderDrawLine(sdlRenderer, posX - offsety, posY + offsetx,
+        status += SDL_RenderDrawLine(renderer, posX - offsety, posY + offsetx,
             posX + offsety, posY + offsetx);
-        status += SDL_RenderDrawLine(sdlRenderer, posX - offsetx, posY + offsety,
+        status += SDL_RenderDrawLine(renderer, posX - offsetx, posY + offsety,
             posX + offsetx, posY + offsety);
-        status += SDL_RenderDrawLine(sdlRenderer, posX - offsetx, posY - offsety,
+        status += SDL_RenderDrawLine(renderer, posX - offsetx, posY - offsety,
             posX + offsetx, posY - offsety);
-        status += SDL_RenderDrawLine(sdlRenderer, posX - offsety, posY - offsetx,
+        status += SDL_RenderDrawLine(renderer, posX - offsety, posY - offsetx,
             posX + offsety, posY - offsetx);
 
         if (status < 0) {

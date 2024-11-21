@@ -117,6 +117,7 @@ int main()
 
 	// Exemple
 	//component->createSprite("spriteTest", 300, 300, "resources/textures/sprite-test.png", 0, 1);
+	//component->createQuadrilateral("quadri", 100, 100, fpsColor, 50, 200, 0);
 
 	// Main loop
 	while (window->isOpen())

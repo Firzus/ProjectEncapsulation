@@ -10,7 +10,13 @@ protected:
 	float rotation;
 
 public:
-	Quadrilateral(const std::string& label, int x, int y, const ColorRGBA& color, float width, float height, float rotation) : Entity(), color(color), width(width), height(height), rotation(rotation) {}
+	Quadrilateral(const std::string& label, int x, int y, const ColorRGBA& color, float width, float height, float rotation) : 
+		Entity(), color(color), width(width), height(height), rotation(rotation) 
+	{
+		this->label = label;
+		this->posX = x;
+		this->posY = y;
+	}
 	virtual ~Quadrilateral() = default;
 
 	// Physics

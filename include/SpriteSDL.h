@@ -23,8 +23,10 @@ public:
 	void draw() const override;
 
 	bool isColliding(Entity* other) override;
+	void bounceOfEntity(Entity* other) override;
 
 	// Getters - Setters
-	//Texture2D getTexture() const { return texture; }
+	int getHeight() const override { return dstrect.h; }
+	int getWidth() const override { return dstrect.w; }
 };
 

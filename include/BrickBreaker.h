@@ -5,8 +5,10 @@
 class BrickBreaker : public Game
 {
 private:
-	Component* player;
-	Component* ball;
+	Circle* ball;
+	Quadrilateral* player;
+	int numBricks = 40;
+	std::vector<std::string> bricks;
 
 public:
 	BrickBreaker(Window* window, Component* component) : Game(window, component) {}

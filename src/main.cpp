@@ -30,10 +30,10 @@ int main()
 	while (!isLibSetUp)
 	{
 		std::cout << "Choix de la librairie : RayLib (1) ou SDL (2) ?\n";
-		std::cin >> libChoice;
+		//std::cin >> libChoice;
 
 		// For testing purposes
-		//libChoice = 1;
+		libChoice = 1;
 		//libChoice = 2;
 
 		system("cls");
@@ -67,11 +67,11 @@ int main()
 	while (!isGameSetUp)
 	{
 		std::cout << "Choix du jeu : Bulles (1) ou Casse Brique (2) ?\n";
-		std::cin >> gameChoice;
+		//std::cin >> gameChoice;
 
 		// For testing purposes
 		//gameChoice = 1;
-		//gameChoice = 2;
+		gameChoice = 2;
 
 		system("cls");
 
@@ -111,19 +111,11 @@ int main()
 	window->setFrameRate(60);
 	component->loadFont("resources/fonts/calibri.ttf");
 
-	// Props
-	ColorRGBA bgColor(255, 255, 255, 255);
-
 	// FPS
-	ColorRGBA fpsColor(0, 0, 0, 255);
-	component->createText("fpsText", 10, 10, fpsColor, "9999 fps", 16);
+	component->createText("fpsText", 10, 10, ColorRGBA(0, 0, 0, 255), "9999 fps", 16);
 
 	// Game
 	game->init();
-
-	// Exemple
-	//component->createSprite("spriteTest", 300, 300, "resources/textures/sprite-test.png", 0, 1);
-	//component->createQuadrilateral("quadri", 100, 100, fpsColor, 50, 200, 0);
 
 	// Main loop
 	while (window->isOpen())
@@ -151,7 +143,7 @@ int main()
 
 		component->getEntity<Text>("fpsText")->setContent(std::to_string(window->getFrameRate()) + " fps");
 
-		window->clear(bgColor);
+		window->clear(ColorRGBA(255, 255, 255, 255));
 		window->beginDrawing();
 		window->draw(component->getEntities());
 		window->endDrawing();

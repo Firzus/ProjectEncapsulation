@@ -19,3 +19,7 @@ bool SpriteRaylib::isColliding(Entity* other)
 {
 	return false;
 }
+
+void SpriteRaylib::bounceOfEntity(Entity* other)
+{
+}

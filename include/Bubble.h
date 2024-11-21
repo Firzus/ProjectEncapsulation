@@ -5,6 +5,7 @@
 class Bubble : public Game
 {
 private:
+	std::vector<Circle*> circles;
 	ColorRGBA shapeColor1 = { 0, 0, 0, 0 };
 	ColorRGBA shapeColor2 = { 0, 0, 0, 0 };
 	ColorRGBA shapeColor3 = { 0, 0, 0, 0 };
@@ -14,4 +15,5 @@ public:
 
 	void init() override;
 	void update() override;
+	void createBubble(std::string label, int x, int y, const ColorRGBA& color, float radius, int speedX, int speedY);
 };

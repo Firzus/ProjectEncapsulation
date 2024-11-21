@@ -6,13 +6,9 @@ void Bubble::init()
 	shapeColor2 = { 0, 255, 0, 255 };
 	shapeColor3 = { 0, 0, 255, 255 };
 
-	component->createCircle("circle1", 100, 100, shapeColor1, 25);
-	component->createCircle("circle2", 300, 100, shapeColor2, 25);
-	component->createCircle("circle3", 500, 500, shapeColor3, 25);
-
-	component->getEntity<Circle>("circle1")->setDirection(8, 2);
-	component->getEntity<Circle>("circle2")->setDirection(4, -6);
-	component->getEntity<Circle>("circle3")->setDirection(2, 3);
+	createBubble("circle1", 100, 100, shapeColor1, 25, 8, 2);
+	createBubble("circle2", 300, 100, shapeColor2, 25, -3, 5);
+	createBubble("circle3", 500, 500, shapeColor3, 25, 2, 3);
 }
 
 void Bubble::update()
@@ -58,4 +54,19 @@ void Bubble::update()
 			it->second->move();
 		}
 	}
+}
+
+void Bubble::createBubble(std::string label, int x, int y, const ColorRGBA& color, float radius, int speedX, int speedY)
+{
+	component->createCircle(label, x, y, color, radius);
+
+	auto it = component->getEntities().find(label);
+	if (it != component->getEntities().end()) {
+		Circle* circle = dynamic_cast<Circle*>(it->second);
+		if (circle) {
+			circles.push_back(circle);
+		}
+	}
+
+	component->getEntity<Circle>(label)->setDirection(speedX, speedY);
 }

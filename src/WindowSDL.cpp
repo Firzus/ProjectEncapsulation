@@ -116,23 +116,6 @@ void WindowSDL::endDrawing()
     SDL_RenderPresent(renderer);
 }
 
-//void WindowSDL::createCircle(std::string label, int x, int y, const ColorRGBA& color, float radius)
-//{
-//    Window::createCircle(label, x, y, color, radius);
-//
-//    circles[label] = new CircleSDL(label, x, y, color, radius, renderer);
-//}
-//
-//void WindowSDL::removeCircle(const std::string& label)
-//{
-//    Window::removeCircle(label);
-//}
-//
-//void WindowSDL::createSprite(int x, int y, const std::string& filePath)
-//{
-//
-//}
-
 void WindowSDL::close()
 {
     if (renderer) {
@@ -154,27 +137,6 @@ void WindowSDL::close()
 
     SDL_Quit();
     open = false;
-}
-
-void WindowSDL::createText(std::string label, int x, int y, const ColorRGBA& color, std::string content, int fontSize)
-{
-    Window::createText(label, x, y, color, content, fontSize);
-
-    texts[label] = new TextSDL(customFont, label, x, y, color, content, fontSize, renderer);
-}
-
-void WindowSDL::removeText(const std::string& label)
-{
-    Window::removeText(label);
-}
-
-void WindowSDL::loadFont(const std::string& fontPath)
-{
-    customFont = TTF_OpenFont(fontPath.c_str(), 16);
-    if (!customFont) {
-        std::cerr << "TTF_OpenFont Error: " << TTF_GetError() << std::endl;
-        return;
-    }
 }
 
 void WindowSDL::setFrameRate(int frameRate)

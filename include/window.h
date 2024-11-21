@@ -26,4 +26,9 @@ public:
 	// Utils
 	virtual void setFrameRate(int frameRate) = 0;
 	virtual int getFrameRate() const = 0;
+
+	// Getters
+	int getWindowWidth() { return windowWidth; }
+	int getWindowHeight() { return windowHeight; }
+
 };

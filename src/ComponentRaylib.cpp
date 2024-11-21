@@ -7,7 +7,7 @@ void ComponentRaylib::createText(std::string label, int x, int y, const ColorRGB
 
 void ComponentRaylib::createCircle(std::string label, int x, int y, const ColorRGBA& color, float radius)
 {
-	Component::createEntity(label, entities[label] = new CircleRaylib(label, x, y, color, radius, NULL));
+	Component::createEntity(label, entities[label] = new CircleRaylib(label, x, y, color, radius));
 }
 
 void ComponentRaylib::createSprite(std::string label, int x, int y, std::string texturePath, float rotation, float scale)

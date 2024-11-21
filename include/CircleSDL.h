@@ -7,10 +7,15 @@
 
 class CircleSDL : public Circle
 {
+private:
+	SDL_Renderer* renderer;
 
 public:
-	CircleSDL(std::string label, int x, int y, const ColorRGBA& color, float radius, void* renderer)
-		: Circle(label, x, y, color, radius, renderer) {
+	CircleSDL(std::string label, int x, int y, const ColorRGBA& color, float radius, SDL_Renderer* renderer)
+		: Circle(label, x, y, color, radius) 
+	{
+		this->renderer = renderer;
+
 	}
 
 	void draw() const override;

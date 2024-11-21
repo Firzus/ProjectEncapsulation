@@ -54,8 +54,14 @@ int main()
 	// Program
 	window->init();
 	window->createWindow(800, 600, "Window");
-	window->setFrameRate(60);
 
+	// Exception for SDL
+	if (choice == 2)
+	{
+		dynamic_cast<ComponentSDL*>(component)->setRenderer(dynamic_cast<WindowSDL*>(window)->getRenderer());
+	}
+
+	window->setFrameRate(60);
 	component->loadFont("resources/fonts/Roboto.ttf");
 
 	// Props
@@ -65,30 +71,26 @@ int main()
 	ColorRGBA shapeColor2(0, 255, 0, 255);
 	ColorRGBA shapeColor3(0, 180, 180, 255);
 
-
 	component->createSprite("spriteTest", 300, 300, "resources/textures/sprite-test.png", 0, 1);
 
-	window->createCircle("circle1", 100, 100, shapeColor1, 25);
-	window->createCircle("circle2", 300, 100, shapeColor2, 25);
-	window->createCircle("circle3", 500, 500, shapeColor3, 25);
+	component->createCircle("circle1", 100, 100, shapeColor1, 25);
+	component->createCircle("circle2", 300, 100, shapeColor2, 25);
+	component->createCircle("circle3", 500, 500, shapeColor3, 25);
 
-	window->getCircle("circle1")->setDirection(8, 2);
-	window->getCircle("circle2")->setDirection(4, -6);
-	window->getCircle("circle3")->setDirection(2, 3);
+	component->createText("fpsText", 10, 10, fpsColor, "9999 fps", 16);
+
+	component->getEntity<Circle>("circle1")->setDirection(8, 2);
+	component->getEntity<Circle>("circle2")->setDirection(4, -6);
+	component->getEntity<Circle>("circle3")->setDirection(2, 3);
 
 	// Main loop
 	while (window->isOpen())
 	{
-		// Physics
-		if (component->getEntity<Circle>("circle1")->isColliding(component->getEntity<Circle>("circle2")))
+		// Physics and collisions
+		for (auto it = component->getEntities().begin(); it != component->getEntities().end(); ++it)
 		{
-			component->deleteEntity("circle2");
-		}
-
-		for (auto it = window->getCirclesList().begin(); it != window->getCirclesList().end(); ++it)
-		{
-			// For each circle in the list, check if it collided with another circle of the same list
-			for (auto other = window->getCirclesList().begin(); other != window->getCirclesList().end(); ++other)
+			// For each component in the list, check if it collided with another component of the same list
+			for (auto other = component->getEntities().begin(); other != component->getEntities().end(); ++other)
 			{
 				if (it->second->isColliding(other->second))
 				{
@@ -96,27 +98,29 @@ int main()
 				}
 			}
 
-			// Left and right screen collisions
-			if (it->second->getPosX() - it->second->getRadius() <= 0 ||
-				it->second->getPosX() + it->second->getRadius() >= window->getWindowWidth())
+			// Verify the actual component is a circle
+			if (dynamic_cast<Circle*>(it->second))
 			{
-				it->second->setDirection(-it->second->getDirX(), it->second->getDirY());
-			}
+				Circle* circle = dynamic_cast<Circle*>(it->second);
 
-			// Up and down screen collisions
-			if (it->second->getPosY() - it->second->getRadius() <= 0 ||
-				it->second->getPosY() + it->second->getRadius() >= window->getWindowHeight())
-			{
-				it->second->setDirection(it->second->getDirX(), -it->second->getDirY());
+				// Left and right screen collisions
+				if (circle->getPosX() - circle->getRadius() <= 0 ||
+					circle->getPosX() + circle->getRadius() >= window->getWindowWidth())
+				{
+					it->second->setDirection(-it->second->getDirX(), it->second->getDirY());
+				}
+
+				// Up and down screen collisions
+				if (circle->getPosY() - circle->getRadius() <= 0 ||
+					circle->getPosY() + circle->getRadius() >= window->getWindowHeight())
+				{
+					circle->setDirection(circle->getDirX(), -circle->getDirY());
+				}
 			}
 		}
-		if (component->getEntity<Circle>("circle1") != nullptr)
-		{
-			component->getEntity<Circle>("circle1")->move(1, 0);
-		}
 
-		// Inputs handling (Raylib)
-		for (auto it = window->getCirclesList().begin(); it != window->getCirclesList().end(); ++it)
+		// Call the move function for every components in the list
+		for (auto it = component->getEntities().begin(); it != component->getEntities().end(); ++it)
 		{
 			if (it->second != nullptr)
 			{
@@ -128,7 +132,7 @@ int main()
 
 		window->clear(bgColor);
 		window->beginDrawing();
-		window->draw(component->getEntites());
+		window->draw(component->getEntities());
 		window->endDrawing();
 	}
 

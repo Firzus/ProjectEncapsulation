@@ -17,6 +17,6 @@ public:
 	void bounceOfEntity(Entity* other) override;
 
 	// Getters - Setters
-	int getHeight() const override { return texture.width; }
-	int getWidth() const override { return texture.height; }
+	int getHeight() const override { return texture.height; }
+	int getWidth() const override { return texture.width; }
 };

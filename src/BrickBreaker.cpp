@@ -19,7 +19,6 @@ void BrickBreaker::init()
 		// Add the brick to the list
 		bricks.push_back("brick" + std::to_string(i + 1));
 	}
-    component->createQuadrilateral("test", 0, 0, ColorRGBA(0, 0, 0, 255), 200, 50, 0);
 }
 
 void BrickBreaker::update()
@@ -65,19 +64,12 @@ void BrickBreaker::update()
                 ball->setDirY(-ball->getDirY());
             }
 
-            component->deleteEntity(*it);   // Supprimer la brique
-            it = bricks.erase(it);          // Retirer la brique du tableau
+            component->deleteEntity(*it);
+            it = bricks.erase(it);
         }
         else {
             ++it;
         }
-    }
-
-    // Perdre si la balle tombe en bas
-    if (ball->getPosY() - ball->getRadius() > window->getWindowHeight()) {
-        std::cout << "Game Over! Press R to restart.\n";
-
-        //gameOver = true;
     }
 
     ball->move();
@@ -91,5 +83,14 @@ void BrickBreaker::update()
     {
         player->setDirX(5);
         player->move();
+    }
+
+    // Perdre si la balle tombe en bas
+    if (ball->getPosY() - ball->getRadius() > window->getWindowHeight()) {
+    
+		// Remettre la balle en haut
+		ball->setPosition(400, 500);
+		ball->setDirX(3);
+		ball->setDirY(-3);
     }
 }

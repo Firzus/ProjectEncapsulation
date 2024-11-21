@@ -161,6 +161,7 @@
     <ClCompile Include="src\ComponentRaylib.cpp" />
     <ClCompile Include="src\ComponentSDL.cpp" />
     <ClCompile Include="src\Entity.cpp" />
+    <ClCompile Include="src\GameManager.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Sprite.cpp" />
     <ClCompile Include="src\SpriteRaylib.cpp" />
@@ -181,6 +182,7 @@
     <ClInclude Include="include\ComponentRaylib.h" />
     <ClInclude Include="include\ComponentSDL.h" />
     <ClInclude Include="include\Entity.h" />
+    <ClInclude Include="include\GameManager.h" />
     <ClInclude Include="include\Sprite.h" />
     <ClInclude Include="include\SpriteRaylib.h" />
     <ClInclude Include="include\SpriteSDL.h" />

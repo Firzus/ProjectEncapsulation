@@ -34,5 +34,5 @@ public:
 		return nullptr;
 	}
 
-	std::unordered_map<std::string, Entity*> getEntites() const { return entities; }
+	std::unordered_map<std::string, Entity*>& getEntities() { return entities; }
 };

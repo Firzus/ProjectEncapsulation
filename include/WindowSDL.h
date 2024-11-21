@@ -2,23 +2,21 @@
 #define SDL_MAIN_HANDLED
 
 #include "Window.h"
-#include "CircleSDL.h"
-#include <iostream>
 #include <stdexcept>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_timer.h>
+#include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_image.h>
 
-class WindowSDL : public Window {
+class WindowSDL : public Window 
+{
 SDL_Window* window = nullptr;
 SDL_Event event;
 SDL_Renderer* renderer = nullptr;
-SDL_Surface* image = NULL;
-SDL_Texture* texture = NULL;
-SDL_Rect dstrect;
 Uint64 start;
 Uint64 end;
+int currentFrameRate = 0;
 int wantedFrameRate = 0;
-bool isImageLoaded = false;
 bool open = false;
 
 public:
@@ -36,4 +34,7 @@ public:
 	// Utils
 	void setFrameRate(int frameRate) override;
 	int getFrameRate() const override;
+
+	// Getters
+	SDL_Renderer* getRenderer() { return renderer; }
 };

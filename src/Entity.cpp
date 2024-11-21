@@ -6,8 +6,14 @@ void Entity::setPosition(int x, int y)
 	posY = y;
 }
 
-void Entity::move(int x, int y)
+void Entity::setDirection(int x, int y)
 {
-	posX += x;
-	posY += y;
+	dirX = x;
+	dirY = y;
+}
+
+void Entity::move()
+{
+	posX += dirX * speed;
+	posY += dirY * speed;
 }

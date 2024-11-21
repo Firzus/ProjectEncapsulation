@@ -9,6 +9,14 @@ void WindowSDL::init()
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		throw std::runtime_error("SDL n'a pas pu être initialisé : " + std::string(SDL_GetError()));
 	}
+
+    if (TTF_Init() == -1) {
+        throw std::runtime_error("Erreur d'initialisation de SDL_ttf : " + std::string(TTF_GetError()));
+    }
+
+    if (IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG) == 0) {
+        throw std::runtime_error("Failed to initialize SDL_image: " + std::string(IMG_GetError()));
+    }
 }
 
 void WindowSDL::createWindow(int width, int height, const std::string& title)
@@ -59,36 +67,6 @@ void WindowSDL::beginDrawing()
 
     // Start FPS counter
     start = SDL_GetPerformanceCounter();
-
-    /*
-    SDL_Rect rect;
-    rect.x = 250;
-    rect.y = 150;
-    rect.w = 200;
-    rect.h = 200;
-
-    SDL_RenderDrawRect(renderer, &rect);
-    SDL_RenderFillRect(renderer, &rect);
-    */
-
-    /*
-    SDL_RenderDrawCircle(renderer, 200, 200, 50);
-    SDL_RenderFillCircle(renderer, 200, 200, 50);
-    */
-
-    /*
-    if (!isImageLoaded)
-    {
-        image = SDL_LoadBMP("x64/Debug/tree.bmp");
-        texture = SDL_CreateTextureFromSurface(renderer, image);
-        dstrect = { 50, 20, 700, 400 };   // posx, posy, length, height
-
-        isImageLoaded = true;
-    }
-    // copy the texture to the rendering context
-    SDL_RenderCopy(renderer, texture, NULL, &dstrect);
-    */
-
 }
 
 void WindowSDL::endDrawing()
@@ -97,28 +75,20 @@ void WindowSDL::endDrawing()
     end = SDL_GetPerformanceCounter();
     float elapsedMS = (end - start) / (float)SDL_GetPerformanceFrequency() * 1000.0f;
 
-    // Cap to chosen FPS
-    SDL_Delay(floor((1000 / wantedFrameRate) - elapsedMS));
+    //currentFrameRate = 1.0f / (elapsedMS / 1000);
+
+    // Calculer le délai restant pour atteindre le FPS souhaité
+    float delay = 1000.0f / wantedFrameRate;
+
+    // Ne pas appeler SDL_Delay si le délai est négatif ou nul
+    if (elapsedMS < delay) {
+        SDL_Delay(static_cast<Uint32>(floor(delay - elapsedMS)));
+    }
+
+    currentFrameRate = 1000.0f / (elapsedMS + (delay - elapsedMS > 0 ? delay - elapsedMS : 0));
 
     SDL_RenderPresent(renderer);
 }
-
-//void WindowSDL::createCircle(std::string label, int x, int y, const ColorRGBA& color, float radius)
-//{
-//    Window::createCircle(label, x, y, color, radius);
-//
-//    circles[label] = new CircleSDL(label, x, y, color, radius, renderer);
-//}
-//
-//void WindowSDL::removeCircle(const std::string& label)
-//{
-//    Window::removeCircle(label);
-//}
-//
-//void WindowSDL::createSprite(int x, int y, const std::string& filePath)
-//{
-//
-//}
 
 void WindowSDL::close()
 {
@@ -130,32 +100,10 @@ void WindowSDL::close()
         SDL_DestroyWindow(window);
         window = nullptr;
     }
-    if (texture) {
-        SDL_DestroyTexture(texture);
-        texture = nullptr;
-    }
-    if (image) {
-        SDL_FreeSurface(image);
-        image = nullptr;
-    }
 
     SDL_Quit();
     open = false;
 }
-
-//void WindowSDL::createText(std::string label, int x, int y, const ColorRGBA& color, std::string content, int fontSize)
-//{
-//
-//}
-//
-//void WindowSDL::removeText(const std::string& label)
-//{
-//
-//}
-
-//void WindowSDL::loadFont(const std::string& fontPath)
-//{
-//}
 
 void WindowSDL::setFrameRate(int frameRate)
 {
@@ -164,5 +112,5 @@ void WindowSDL::setFrameRate(int frameRate)
 
 int WindowSDL::getFrameRate() const
 {
-    return 0;
+    return currentFrameRate;
 }

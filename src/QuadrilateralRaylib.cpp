@@ -9,14 +9,9 @@ void QuadrilateralRaylib::draw() const
         height
     };
 
-    Vector2 origin = {
-        width / 2.0f,
-        height / 2.0f
-    };
-
     DrawRectanglePro(
         rect,
-        origin,
+        Vector2{0, 0},
         rotation,
         Color{
             static_cast<unsigned char>(color.R()),

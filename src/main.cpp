@@ -30,10 +30,10 @@ int main()
 	while (!isLibSetUp)
 	{
 		std::cout << "Choix de la librairie : RayLib (1) ou SDL (2) ?\n";
-		//std::cin >> libChoice;
+		std::cin >> libChoice;
 
 		// For testing purposes
-		libChoice = 1;
+		//libChoice = 1;
 		//libChoice = 2;
 
 		system("cls");
@@ -67,11 +67,11 @@ int main()
 	while (!isGameSetUp)
 	{
 		std::cout << "Choix du jeu : Bulles (1) ou Casse Brique (2) ?\n";
-		//std::cin >> gameChoice;
+		std::cin >> gameChoice;
 
 		// For testing purposes
 		//gameChoice = 1;
-		gameChoice = 2;
+		//gameChoice = 2;
 
 		system("cls");
 
@@ -89,7 +89,7 @@ int main()
 
 			std::cout << "Jeu : Casse Brique\n\n";
 
-			game = new BrickBreaker(window, component);
+			game = new BrickBreaker(window, component, inputManager);
 		}
 		else
 		{
@@ -120,26 +120,8 @@ int main()
 	// Main loop
 	while (window->isOpen())
 	{
-		game->update();
-
 		inputManager->update();
-		
-		if (inputManager->isKeyHeld(KeyCode::UP))
-		{
-			std::cout << "Up key pressed!" << std::endl;
-		}
-		if (inputManager->isKeyHeld(KeyCode::DOWN))
-		{
-			std::cout << "Down key pressed!" << std::endl;
-		}
-		if (inputManager->isKeyHeld(KeyCode::LEFT))
-		{
-			std::cout << "Left key pressed!" << std::endl;
-		}
-		if (inputManager->isKeyHeld(KeyCode::RIGHT))
-		{
-			std::cout << "Right key pressed!" << std::endl;
-		}
+		game->update();
 
 		component->getEntity<Text>("fpsText")->setContent(std::to_string(window->getFrameRate()) + " fps");
 

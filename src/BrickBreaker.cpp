@@ -3,7 +3,7 @@
 void BrickBreaker::init()
 {
 	component->createQuadrilateral("player", 400, 580, ColorRGBA(2, 6, 23, 255), 150, 20, 0);
-	component->createCircle("ball", 400, 300, ColorRGBA(203, 213, 225, 255), 15);
+	component->createCircle("ball", 400, 500, ColorRGBA(203, 213, 225, 255), 15);
 	player = component->getEntity<Quadrilateral>("player");
 	ball = component->getEntity<Circle>("ball");
 	ball->setDirX(3);
@@ -19,6 +19,7 @@ void BrickBreaker::init()
 		// Add the brick to the list
 		bricks.push_back("brick" + std::to_string(i + 1));
 	}
+    component->createQuadrilateral("test", 0, 0, ColorRGBA(0, 0, 0, 255), 200, 50, 0);
 }
 
 void BrickBreaker::update()
@@ -52,17 +53,20 @@ void BrickBreaker::update()
     // Perdre si la balle tombe en bas
     if (ball->getPosY() - ball->getRadius() > window->getWindowHeight()) {
         std::cout << "Game Over! Press R to restart.\n";
+
         //gameOver = true;
     }
 
-    // Déplacement de la balle
     ball->move();
 
-    // Déplacement de la barre du joueur (contrôle clavier)
-    //if (IsKeyDown(KEY_RIGHT)) {
-    //    player->move(5, 0); // Déplacer à droite
-    //}
-    //if (IsKeyDown(KEY_LEFT)) {
-    //    player->move(-5, 0); // Déplacer à gauche
-    //}
+    if (inputManager->isKeyHeld(KeyCode::LEFT) && player->getPosX() > 0)
+    {
+		player->setDirX(-5);
+        player->move();
+    }
+    if (inputManager->isKeyHeld(KeyCode::RIGHT) && player->getPosX() < window->getWindowWidth() - player->getWidth())
+    {
+        player->setDirX(5);
+        player->move();
+    }
 }

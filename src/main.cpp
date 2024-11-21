@@ -103,7 +103,9 @@ int main()
 
 	// Init
 	window->setFrameRate(60);
-	component->loadFont("resources/fonts/Roboto.ttf");
+	component->loadFont("resources/fonts/calibri.ttf");
+
+	// Props
 	ColorRGBA bgColor(255, 255, 255, 255);
 
 	// FPS

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Entity.h"
-#include "ColorRGBA.h"
 
 class Circle : public Entity {
 protected:
@@ -15,7 +14,6 @@ public:
 		this->posX = x;
 		this->posY = y;
 	}
-
 	virtual ~Circle() = default;
 
 	// Physics

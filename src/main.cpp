@@ -132,6 +132,10 @@ int main()
 	}
 
 	window->close();
+
+	delete game;
+	delete component;
+	delete window;
 	
 	return 0;
 }

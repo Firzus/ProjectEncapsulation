@@ -19,6 +19,7 @@ public:
 
 	virtual void createText(std::string label, int x, int y, const ColorRGBA& color, std::string content, int fontSize) = 0;
 	virtual void createCircle(std::string label, int x, int y, const ColorRGBA& color, float radius) = 0;
+	virtual void createQuadrilateral(std::string label, int x, int y, const ColorRGBA& color, float width, float height, float rotation) = 0;
 	virtual void createSprite(std::string label, int x, int y, std::string texturePath, float rotation, float scale) = 0;
 
 	// Utils

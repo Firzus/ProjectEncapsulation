@@ -12,8 +12,3 @@ void Window::draw(std::unordered_map<std::string, Entity*> entities)
 		pair.second->draw();
 	}
 }
-
-void Window::close()
-{
-    delete this;
-}

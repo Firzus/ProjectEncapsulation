@@ -2,7 +2,6 @@
 #define SDL_MAIN_HANDLED
 
 #include "Circle.h"
-#include <stdexcept>
 #include <SDL2/SDL.h>
 
 class CircleSDL : public Circle

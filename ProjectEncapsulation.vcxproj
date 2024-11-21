@@ -164,6 +164,9 @@
     <ClCompile Include="src\ComponentSDL.cpp" />
     <ClCompile Include="src\Entity.cpp" />
     <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\InputManager.cpp" />
+    <ClCompile Include="src\InputManagerRaylib.cpp" />
+    <ClCompile Include="src\InputManagerSDL.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Quadrilateral.cpp" />
     <ClCompile Include="src\QuadrilateralRaylib.cpp" />
@@ -190,6 +193,9 @@
     <ClInclude Include="include\ComponentSDL.h" />
     <ClInclude Include="include\Entity.h" />
     <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\InputManager.h" />
+    <ClInclude Include="include\InputManagerRaylib.h" />
+    <ClInclude Include="include\InputManagerSDL.h" />
     <ClInclude Include="include\Quadrilateral.h" />
     <ClInclude Include="include\QuadrilateralRaylib.h" />
     <ClInclude Include="include\QuadrilateralSDL.h" />

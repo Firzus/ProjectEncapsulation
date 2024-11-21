@@ -6,6 +6,9 @@
 #include "ComponentRaylib.h"
 #include "ComponentSDL.h"
 
+#include "InputManagerRaylib.h"
+#include "InputManagerSDL.h"
+
 #include "Bubble.h"
 #include "BrickBreaker.h"
 
@@ -18,6 +21,7 @@ int main()
 
 	Window* window = nullptr;
 	Component* component = nullptr;
+	InputManager* inputManager = nullptr;
 
 	Game* game = nullptr;
 
@@ -42,6 +46,7 @@ int main()
 
 			window = new WindowRaylib();
 			component = new ComponentRaylib();
+			inputManager = new InputManagerRaylib();
 		}
 		else if (libChoice == 2)
 		{
@@ -51,6 +56,7 @@ int main()
 
 			window = new WindowSDL();
 			component = new ComponentSDL();
+			inputManager = new InputManagerSDL();
 		}
 		else
 		{
@@ -124,12 +130,36 @@ int main()
 	{
 		game->update();
 
+		inputManager->update();
+		
+		if (inputManager->isKeyHeld(KeyCode::UP))
+		{
+			std::cout << "Up key pressed!" << std::endl;
+		}
+		if (inputManager->isKeyHeld(KeyCode::DOWN))
+		{
+			std::cout << "Down key pressed!" << std::endl;
+		}
+		if (inputManager->isKeyHeld(KeyCode::LEFT))
+		{
+			std::cout << "Left key pressed!" << std::endl;
+		}
+		if (inputManager->isKeyHeld(KeyCode::RIGHT))
+		{
+			std::cout << "Right key pressed!" << std::endl;
+		}
+
 		component->getEntity<Text>("fpsText")->setContent(std::to_string(window->getFrameRate()) + " fps");
 
 		window->clear(bgColor);
 		window->beginDrawing();
 		window->draw(component->getEntities());
 		window->endDrawing();
+
+		if (inputManager->isQuitRequested())
+		{
+			window->close();
+		}
 	}
 
 	window->close();
